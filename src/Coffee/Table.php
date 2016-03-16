@@ -53,8 +53,11 @@ class Table {
 
 //		foreach ($this->remainingPositions as $rowIndex => $tableRow) {
 //			foreach ($tableRow as $columnIndex => $containsCoffee) {
-//				if ($containsCoffee)
+//				if ($containsCoffee) {
 //					$tile = new Tile($columnIndex, $rowIndex);
+//					$spot = new Spot();
+//				}
+//
 //			}
 //		}
 	}
@@ -110,7 +113,7 @@ class Table {
 	 * @param Tile $tile
 	 * @return bool
 	 */
-	public function isValidForTile(Tile $tile) {
+	public function couldContainTile(Tile $tile) {
 		if ($tile->getColumn() < 0 || $tile->getRow() < 0) {
 			return false;
 		}

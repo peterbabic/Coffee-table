@@ -51,7 +51,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 
 		$table = new Table($tableMap);
 		$tile = new Tile(0, 0);
-		$this->assertTrue($table->isValidForTile($tile));
+		$this->assertTrue($table->couldContainTile($tile));
 	}
 
 	public function testTileLiesOutsideTable() {
@@ -62,7 +62,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 
 		$table = new Table($tableMap);
 		$tile = new Tile(2, 1);
-		$this->assertFalse($table->isValidForTile($tile));
+		$this->assertFalse($table->couldContainTile($tile));
 	}
 
 	public function testGetSpots() {
