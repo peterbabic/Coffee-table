@@ -20,7 +20,7 @@ class Table {
 	/**
 	 * @var array
 	 */
-	private $remainingTiles = [];
+	private $remainingPositions = [];
 
 	/**
 	 * @var int
@@ -31,6 +31,10 @@ class Table {
 	 * @var int
 	 */
 	private $width = 0;
+	/**
+	 * @var Spot[]
+	 */
+	private $spots = [];
 
 	/**
 	 * Table constructor.
@@ -45,7 +49,14 @@ class Table {
 
 		$this->height = $this->calculateMapHeight($coffeeMap);
 		$this->width = $this->calculateMapWidth($coffeeMap);
-		$this->remainingTiles = $coffeeMap;
+		$this->remainingPositions = $coffeeMap;
+
+//		foreach ($this->remainingPositions as $rowIndex => $tableRow) {
+//			foreach ($tableRow as $columnIndex => $containsCoffee) {
+//				if ($containsCoffee)
+//					$tile = new Tile($columnIndex, $rowIndex);
+//			}
+//		}
 	}
 
 	/**
@@ -65,8 +76,8 @@ class Table {
 	/**
 	 * @return array
 	 */
-	public function getRemainingTiles() {
-		return $this->remainingTiles;
+	public function getRemainingPositions() {
+		return $this->remainingPositions;
 	}
 
 	/**
@@ -100,15 +111,42 @@ class Table {
 	 * @return bool
 	 */
 	public function isValidForTile(Tile $tile) {
-		if ($tile->getX() < 0 || $tile->getY() < 0) {
+		if ($tile->getColumn() < 0 || $tile->getRow() < 0) {
 			return false;
 		}
 
 		// Dimensions start from 1 but coordinates from 0, need to compensate
-		if ($tile->getX() > ($this->getWidth() - 1) || $tile->getY() > ($this->getHeight() - 1)) {
+		if ($tile->getColumn() > ($this->getWidth() - 1) || $tile->getRow() > ($this->getHeight() - 1)) {
 			return false;
 		}
 
 		return true;
+	}
+
+	/**
+	 * @param Spot $spot
+	 * @return bool
+	 */
+	public function addSpot(Spot $spot) {
+		if (is_null($spot)) {
+			return false;
+		}
+
+		$this->spots[] = $spot;
+		return true;
+	}
+
+	/**
+	 * @return Spot[]
+	 */
+	public function getSpots() {
+		return $this->spots;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getSpotsCount() {
+		return count($this->spots);
 	}
 }

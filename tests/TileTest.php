@@ -10,14 +10,14 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 		$tileA = new Tile(2, 2);
 		$tileB = new Tile(2, 2);
 
-		$this->assertTrue($tileA->isTheSameX($tileB));
+		$this->assertTrue($tileA->isTheSameColumn($tileB));
 	}
 
 	public function testTheSameY() {
 		$tileA = new Tile(2, 2);
 		$tileB = new Tile(2, 2);
 
-		$this->assertTrue($tileA->isTheSameY($tileB));
+		$this->assertTrue($tileA->isTheSameRow($tileB));
 	}
 
 	public function testTheSameTile() {
@@ -90,68 +90,5 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertTrue($northTileA->isTheSameTile($NorthTileB));
 	}
-
-//	public function testNorthOf() {
-//		$tileA = new Tile(2, 2);
-//		$tileB = new Tile(2, 1);
-//
-//		$this->assertTrue($tileA->isNorthOf($tileB));
-//	}
-//
-//	public function testSouthOf() {
-//		$tileA = new Tile(2, 1);
-//		$tileB = new Tile(2, 2);
-//
-//		$this->assertTrue($tileA->isSouthOf($tileB));
-//	}
-//
-//	public function testEastOf() {
-//		$tileA = new Tile(2, 2);
-//		$tileB = new Tile(1, 2);
-//
-//		$this->assertTrue($tileA->isEastOf($tileB));
-//	}
-//
-//	public function testWestOf() {
-//		$tileA = new Tile(1, 2);
-//		$tileB = new Tile(2, 2);
-//
-//		$this->assertTrue($tileA->isWestOf($tileB));
-//	}
-//
-//	public function testNorthEastOf() {
-//		$tileA = new Tile(2, 2);
-//		$tileB = new Tile(1, 1);
-//
-//		$this->assertTrue($tileA->isNorthEastOf($tileB));
-//	}
-//
-//	public function testNorthWestOf() {
-//		$tileA = new Tile(1, 2);
-//		$tileB = new Tile(2, 1);
-//
-//		$this->assertTrue($tileA->isNorthWestOf($tileB));
-//	}
-//
-//	public function testSouthEastOf() {
-//		$tileA = new Tile(2, 1);
-//		$tileB = new Tile(1, 2);
-//
-//		$this->assertTrue($tileA->isSouthEastOf($tileB));
-//	}
-//
-//	public function testSouthWestOf() {
-//		$tileA = new Tile(1, 1);
-//		$tileB = new Tile(2, 2);
-//
-//		$this->assertTrue($tileA->isSouthWestOf($tileB));
-//	}
-//
-//	public function testNeighborOf() {
-//		$tileA = new Tile(1, 1);
-//		$tileB = new Tile(2, 2);
-//
-//		$this->assertTrue($tileA->isNeighborOf($tileB));
-//	}
 
 }
