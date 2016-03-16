@@ -1,12 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: delmadord
- * Date: 3/16/16
- * Time: 2:42 PM
- */
 
 namespace Coffee;
+
+// This is not necessary, sice it is bootstrapped but serves for debugging purposes
+require __DIR__ . '/../vendor/autoload.php';
 
 class SpotTest extends \PHPUnit_Framework_TestCase {
 

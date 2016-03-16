@@ -1,12 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: delmadord
- * Date: 3/16/16
- * Time: 6:21 PM
- */
 
 namespace Coffee;
+
+// This is not necessary, sice it is bootstrapped but serves for debugging purposes
+require __DIR__ . '/../vendor/autoload.php';
 
 class MapTest extends \PHPUnit_Framework_TestCase {
 
@@ -15,6 +12,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 			[1, 0],
 			[0, 1],
 		];
+
 		$map = new Map($description);
 		$this->assertEquals($description, $map->describedByArray());
 	}
@@ -41,6 +39,23 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 
 		$map = new Map($description);
 		$this->assertEquals(4, $map->getWidth());
+	}
+
+	public function testRemoveFromDescription() {
+		$description = [
+			[1, 0],
+			[0, 1],
+		];
+
+		$map = new Map($description);
+		$map->removeFromDescription(0, 0);
+
+		$descriptionAfterRemove = [
+			[0],
+			[0, 1],
+		];
+
+		$this->assertEquals($descriptionAfterRemove, $map->describedByArray());
 	}
 
 //	public function testTileLiesOnTable() {

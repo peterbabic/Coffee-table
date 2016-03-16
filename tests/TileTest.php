@@ -2,6 +2,9 @@
 
 namespace Coffee;
 
+// This is not necessary, sice it is bootstrapped but serves for debugging purposes
+require __DIR__ . '/../vendor/autoload.php';
+
 class TileTest extends \PHPUnit_Framework_TestCase {
 
 

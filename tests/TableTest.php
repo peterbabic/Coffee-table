@@ -1,12 +1,10 @@
 <?php
 
 namespace Coffee;
-/**
- * Created by PhpStorm.
- * User: delmadord
- * Date: 3/16/16
- * Time: 7:59 AM
- */
+
+// This is not necessary, sice it is bootstrapped but serves for debugging purposes
+require __DIR__ . '/../vendor/autoload.php';
+
 class TableTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetSpots() {

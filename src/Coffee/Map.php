@@ -70,6 +70,20 @@ class Map {
 	}
 
 	/**
+	 * @param $column
+	 * @param $row
+	 * @return bool
+	 */
+	public function removeFromDescription($column, $row) {
+		if (!isset($this->description[$row][$column])) {
+			return false;
+		}
+
+		array_splice($this->description[$row], $column, 1);
+		return true;
+	}
+
+	/**
 	 * @param $description
 	 * @return int
 	 */
