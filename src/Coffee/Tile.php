@@ -28,7 +28,9 @@ class Tile extends Position {
 	private $representsElement = false;
 
 	/**
-	 * @var bool
+	 * Tiles are inherently unvisited
+	 *
+*@var bool
 	 */
 	private $visited = false;
 

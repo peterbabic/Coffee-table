@@ -7,6 +7,31 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 class MapTest extends \PHPUnit_Framework_TestCase {
 
+	public function testGetTiles() {
+		$tileA = new Tile(1, 1, Tile::REPRESENTS_SPOT);
+		$tileB = new Tile(1, 2, Tile::REPRESENTS_VOID);
+
+		$map = new Map([[1, 0]]);
+		$this->assertEquals([$tileA, $tileB], $map->getTiles());
+	}
+
+	public function testUnVisitedTiles() {
+		$description = [
+			[1, 0],
+			[0, 1],
+		];
+
+		$map = new Map($description);
+		$tiles = $map->getTiles();
+		$tiles[2]->visit();
+		$tiles[3]->visit();
+
+		$tileA = new Tile(1, 1, Tile::REPRESENTS_SPOT);
+		$tileB = new Tile(1, 2, Tile::REPRESENTS_VOID);
+
+		$this->assertEquals([$tileA, $tileB], $map->getUnvisitedTiles());
+	}
+
 	public function testDescribedByArray() {
 		$description = [
 			[1, 0],
@@ -59,57 +84,57 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(4, $map->getWidth());
 	}
 
-	public function testValidPosition() {
-		$description = [
-			[0, 1, 0, 1],
-			[1, 0, 0, 0],
-			[0, 0, 0, 1],
-			[0, 0, 0, 1]
-		];
-
-		$map = new Map($description);
-		$position = new Position(3, 1);
-		$this->assertTrue($map->hasValidPosition($position));
-	}
-
-	public function testInvalidPosition() {
-		$description = [
-			[0, 1, 0, 1],
-			[1, 0, 0, 0],
-			[0, 0, 0, 1],
-			[0, 0, 0, 1]
-		];
-
-		$map = new Map($description);
-		$position = new Position(4, 5);
-		$this->assertFalse($map->hasValidPosition($position));
-	}
-
-	public function testUnvisitedPosition() {
-		$description = [
-			[0, 1, 0, 1],
-			[1, 0, 0, 0],
-			[0, 0, 0, 1],
-			[0, 0, 0, 1]
-		];
-
-		$map = new Map($description);
-		$position = new Position(1, 1);
-		$this->assertFalse($map->isVisitedPosition($position));
-	}
-
-	public function testVisitedPosition() {
-		$description = [
-			[0, 1, 0, 1],
-			[1, 0, 0, 0],
-			[0, 0, 0, 1],
-			[0, 0, 0, 1]
-		];
-
-		$map = new Map($description);
-		$position = new Position(1, 1);
-		$map->visitPosition($position);
-		$this->assertTrue($map->isVisitedPosition($position));
-	}
+//	public function testValidPosition() {
+//		$description = [
+//			[0, 1, 0, 1],
+//			[1, 0, 0, 0],
+//			[0, 0, 0, 1],
+//			[0, 0, 0, 1]
+//		];
+//
+//		$map = new Map($description);
+//		$position = new Position(3, 1);
+//		$this->assertTrue($map->hasValidPosition($position));
+//	}
+//
+//	public function testInvalidPosition() {
+//		$description = [
+//			[0, 1, 0, 1],
+//			[1, 0, 0, 0],
+//			[0, 0, 0, 1],
+//			[0, 0, 0, 1]
+//		];
+//
+//		$map = new Map($description);
+//		$position = new Position(4, 5);
+//		$this->assertFalse($map->hasValidPosition($position));
+//	}
+//
+//	public function testUnvisitedPosition() {
+//		$description = [
+//			[0, 1, 0, 1],
+//			[1, 0, 0, 0],
+//			[0, 0, 0, 1],
+//			[0, 0, 0, 1]
+//		];
+//
+//		$map = new Map($description);
+//		$position = new Position(1, 1);
+//		$this->assertFalse($map->isVisitedPosition($position));
+//	}
+//
+//	public function testVisitedPosition() {
+//		$description = [
+//			[0, 1, 0, 1],
+//			[1, 0, 0, 0],
+//			[0, 0, 0, 1],
+//			[0, 0, 0, 1]
+//		];
+//
+//		$map = new Map($description);
+//		$position = new Position(1, 1);
+//		$map->visitPosition($position);
+//		$this->assertTrue($map->isVisitedPosition($position));
+//	}
 
 }

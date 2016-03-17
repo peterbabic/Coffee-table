@@ -2,11 +2,11 @@
 
 namespace Coffee;
 
-/**
- * Class Map
- *
- * @package Coffee
- */
+	/**
+	 * Class Map
+	 *
+	 * @package Coffee
+	 */
 /**
  * Class Map
  *
@@ -17,12 +17,8 @@ class Map {
 	/**
 	 * @var Tile[]
 	 */
-	private $unVisitedTiles = [];
+	private $tiles = [];
 
-	/**
-	 * @var Tile[]
-	 */
-	private $visitedTiles = [];
 	/**
 	 * @var int
 	 */
@@ -51,9 +47,8 @@ class Map {
 		// but at a cost of reduced performance (minor).
 		foreach ($description as $rowIndex => $row) {
 			foreach ($row as $columnIndex => $tileRepresentation) {
-				// All tiles are inherently unvisited at first
-				// Also we need to convert indices to positions
-				$this->unVisitedTiles[] = new Tile($rowIndex + 1, $columnIndex + 1, $tileRepresentation);
+				// W need to convert indices to positions
+				$this->tiles[] = new Tile($rowIndex + 1, $columnIndex + 1, $tileRepresentation);
 
 				// Find maximum
 				$width = $columnIndex > $width ? $columnIndex : $width;
@@ -69,37 +64,37 @@ class Map {
 	}
 
 	/**
+	 * @return Tile[]
+	 */
+	public function getTiles() {
+		return $this->tiles;
+	}
+
+	/**
+	 * @return Tile[]
+	 */
+	public function getUnvisitedTiles() {
+		$array = [];
+		foreach ($this->getTiles() as $tile) {
+			if (!$tile->isVisited()) {
+				$array[] = $tile;
+			}
+		}
+		return $array;
+	}
+
+	/**
 	 * @param Position $position
 	 * @return Tile|null
 	 */
 	public function getTileByPosition(Position $position) {
-		foreach ($this->getUnVisitedTiles() as $unVisitedTile) {
-			if ($unVisitedTile->isTheSamePosition($position)) {
-				return $unVisitedTile;
-			}
-		}
-
-		foreach ($this->getVisitedTiles() as $visitedTile) {
-			if ($visitedTile->isTheSamePosition($position)) {
-				return $visitedTile;
+		foreach ($this->getTiles() as $tile) {
+			if ($tile->isTheSamePosition($position)) {
+				return $tile;
 			}
 		}
 
 		return null;
-	}
-
-	/**
-	 * @return Tile[]
-	 */
-	public function getUnVisitedTiles() {
-		return $this->unVisitedTiles;
-	}
-
-	/**
-	 * @return Tile[]
-	 */
-	public function getVisitedTiles() {
-		return $this->visitedTiles;
 	}
 
 	/**
@@ -108,50 +103,11 @@ class Map {
 	public function describedByArray() {
 		$array = [];
 
-		foreach ($this->getUnVisitedTiles() as $tile) {
-			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->isRepresentingSpot();
-		}
-
-		foreach ($this->getVisitedTiles() as $tile) {
+		foreach ($this->getTiles() as $tile) {
 			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->isRepresentingSpot();
 		}
 
 		return $array;
-	}
-
-	/**
-	 * @param Position $position
-	 * @return bool
-	 */
-	public function visitPosition(Position $position) {
-		if ($this->hasValidPosition($position)) {
-			foreach ($this->unVisitedTiles as $unVisitedTileIndex => $unVisitedTile) {
-				if ($unVisitedTile->isTheSamePosition($position)) {
-
-					// Move Tile from one group to another and reorder
-					$this->visitedTiles[] = $unVisitedTile;
-					array_splice($this->unVisitedTiles, $unVisitedTileIndex, 1);
-
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Test the upper bound
-	 *
-	 * @param Position $position
-	 * @return bool
-	 */
-	public function hasValidPosition(Position $position) {
-		if ($position->getRow() > $this->getHeight() || $position->getColumn() > $this->getWidth()) {
-			return false;
-		}
-
-		return true;
 	}
 
 	/**
@@ -167,19 +123,54 @@ class Map {
 	public function getWidth() {
 		return $this->width;
 	}
-
-	/**
-	 * @param $position
-	 * @return bool
-	 */
-	public function isVisitedPosition(Position $position) {
-		foreach ($this->visitedTiles as $visitedTile) {
-			if ($visitedTile->isTheSamePosition($position)) {
-				return true;
-			}
-		}
-
-		return false;
-	}
+//
+//	/**
+//	 * @param Position $position
+//	 * @return bool
+//	 */
+//	public function visitPosition(Position $position) {
+//		if ($this->hasValidPosition($position)) {
+//			foreach ($this->tiles as $unVisitedTileIndex => $unVisitedTile) {
+//				if ($unVisitedTile->isTheSamePosition($position)) {
+//
+//					// Move Tile from one group to another and reorder
+//					$this->visitedTiles[] = $unVisitedTile;
+//					array_splice($this->tiles, $unVisitedTileIndex, 1);
+//
+//					return true;
+//				}
+//			}
+//		}
+//
+//		return false;
+//	}
+//
+//	/**
+//	 * Test the upper bound
+//	 *
+//	 * @param Position $position
+//	 * @return bool
+//	 */
+//	public function hasValidPosition(Position $position) {
+//		if ($position->getRow() > $this->getHeight() || $position->getColumn() > $this->getWidth()) {
+//			return false;
+//		}
+//
+//		return true;
+//	}
+//
+//	/**
+//	 * @param $position
+//	 * @return bool
+//	 */
+//	public function isVisitedPosition(Position $position) {
+//		foreach ($this->visitedTiles as $visitedTile) {
+//			if ($visitedTile->isTheSamePosition($position)) {
+//				return true;
+//			}
+//		}
+//
+//		return false;
+//	}
 
 }
