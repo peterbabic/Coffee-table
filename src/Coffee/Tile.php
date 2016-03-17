@@ -12,11 +12,11 @@ class Tile extends Position {
 	/**
 	 * Representation on the map, that element exists on the given tile
 	 */
-	const CONTAINS_ELEMENT = 1;
+	const REPRESENTS_ELEMENT = 1;
 	/**
 	 * Representation on the map, that element does not exist on the given tile
 	 */
-	const NOT_CONTAINS_ELEMENT = 0;
+	const REPRESENTS_VOID = 0;
 	/**
 	 * @var bool
 	 */
@@ -27,24 +27,24 @@ class Tile extends Position {
 	 *
 	 * @param $row
 	 * @param $column
-	 * @param $mapTileRepresentation
+	 * @param $tileRepresentation
 	 * @throws \Exception
 	 */
-	public function __construct($row, $column, $mapTileRepresentation) {
-		if ($mapTileRepresentation != self::CONTAINS_ELEMENT && $mapTileRepresentation != self::NOT_CONTAINS_ELEMENT) {
+	public function __construct($row, $column, $tileRepresentation) {
+		if ($tileRepresentation != self::REPRESENTS_ELEMENT && $tileRepresentation != self::REPRESENTS_VOID) {
 			throw new \Exception('The map contains invalid representations');
 		}
 
 		parent::__construct($row, $column);
 
-		$this->containsElement = $mapTileRepresentation;
+		$this->containsElement = $tileRepresentation;
 	}
 
 	/**
 	 * @return boolean
 	 */
-	public function containsElement() {
-		return $this->containsElement == self::CONTAINS_ELEMENT;
+	public function representsElement() {
+		return $this->containsElement == self::REPRESENTS_ELEMENT;
 	}
 
 }

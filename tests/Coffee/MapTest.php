@@ -17,6 +17,23 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($description, $map->describedByArray());
 	}
 
+	public function testTileByPosition() {
+		$description = [
+			[1, 0],
+			[0, 1],
+		];
+
+		$map = new Map($description);
+
+		$row = 1;
+		$column = 1;
+
+		$position = new Position($row, $column);
+		$tile = new Tile($row, $column, Tile::REPRESENTS_ELEMENT);
+
+		$this->assertEquals($tile, $map->getTileByPosition($position));
+	}
+
 	public function testHeight() {
 		$description = [
 			[0, 1, 0, 1],
@@ -52,7 +69,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 
 		$map = new Map($description);
 		$position = new Position(3, 1);
-		$this->assertTrue($map->isValidPosition($position));
+		$this->assertTrue($map->hasValidPosition($position));
 	}
 
 	public function testInvalidPosition() {
@@ -65,7 +82,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 
 		$map = new Map($description);
 		$position = new Position(4, 5);
-		$this->assertFalse($map->isValidPosition($position));
+		$this->assertFalse($map->hasValidPosition($position));
 	}
 
 	public function testUnvisitedPosition() {
@@ -91,7 +108,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 
 		$map = new Map($description);
 		$position = new Position(1, 1);
-		$map->visitTile($position);
+		$map->visitPosition($position);
 		$this->assertTrue($map->isVisitedPosition($position));
 	}
 

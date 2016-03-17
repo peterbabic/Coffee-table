@@ -98,64 +98,64 @@ class Position {
 	 * @return Position
 	 */
 	public function getNorthEastPosition() {
-		return $this->getSafeNeighbor($this->getRow() - 1, $this->getColumn() + 1);
+		return $this->getSafeNeighbourPosition($this->getRow() - 1, $this->getColumn() + 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getEastPosition() {
-		return $this->getSafeNeighbor($this->getRow(), $this->getColumn() + 1);
+		return $this->getSafeNeighbourPosition($this->getRow(), $this->getColumn() + 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getSouthEastPosition() {
-		return $this->getSafeNeighbor($this->getRow() + 1, $this->getColumn() + 1);
+		return $this->getSafeNeighbourPosition($this->getRow() + 1, $this->getColumn() + 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getSouthPosition() {
-		return $this->getSafeNeighbor($this->getRow() + 1, $this->getColumn());
+		return $this->getSafeNeighbourPosition($this->getRow() + 1, $this->getColumn());
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getSouthWestPosition() {
-		return $this->getSafeNeighbor($this->getRow() + 1, $this->getColumn() - 1);
+		return $this->getSafeNeighbourPosition($this->getRow() + 1, $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getWestPosition() {
-		return $this->getSafeNeighbor($this->getRow(), $this->getColumn() - 1);
+		return $this->getSafeNeighbourPosition($this->getRow(), $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getNorthWestPosition() {
-		return $this->getSafeNeighbor($this->getRow() - 1, $this->getColumn() - 1);
+		return $this->getSafeNeighbourPosition($this->getRow() - 1, $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getNorthPosition() {
-		return $this->getSafeNeighbor($this->getRow() - 1, $this->getColumn());
+		return $this->getSafeNeighbourPosition($this->getRow() - 1, $this->getColumn());
 	}
 
 	/**
-	 * @return array    Neighbors of position from NE to N; CW direction
+	 * @return array    Positions of neighbours from NE to N; CW direction
 	 */
-	public function getNeighbors() {
+	public function getNeighbouringPositions() {
 
-		// null values from out-of-lower-bound neighbors are filtered out and indices are fixed
+		// null values from out-of-lower-bound neighbours are filtered out and indices are fixed
 		return array_values(array_filter([
 			$this->getNorthEastPosition(),
 			$this->getEastPosition(),
@@ -173,7 +173,7 @@ class Position {
 	 * @param $column
 	 * @return bool
 	 */
-	private function fitsIntoLowerBound($row, $column) {
+	protected function fitsIntoLowerBound($row, $column) {
 		if ($row < self::LOWER_BOUND || $column < self::LOWER_BOUND) {
 			return false;
 		}
@@ -186,7 +186,7 @@ class Position {
 	 * @param $column
 	 * @return Position|null
 	 */
-	private function getSafeNeighbor($row, $column) {
+	protected function getSafeNeighbourPosition($row, $column) {
 		if ($this->fitsIntoLowerBound($row, $column)) {
 			return new Position($row, $column);
 		}

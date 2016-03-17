@@ -7,6 +7,11 @@ namespace Coffee;
  *
  * @package Coffee
  */
+/**
+ * Class Map
+ *
+ * @package Coffee
+ */
 class Map {
 
 	/**
@@ -64,6 +69,26 @@ class Map {
 	}
 
 	/**
+	 * @param Position $position
+	 * @return Tile|null
+	 */
+	public function getTileByPosition(Position $position) {
+		foreach ($this->getUnVisitedTiles() as $unVisitedTile) {
+			if ($unVisitedTile->isTheSamePosition($position)) {
+				return $unVisitedTile;
+			}
+		}
+
+		foreach ($this->getVisitedTiles() as $visitedTile) {
+			if ($visitedTile->isTheSamePosition($position)) {
+				return $visitedTile;
+			}
+		}
+
+		return null;
+	}
+
+	/**
 	 * @return Tile[]
 	 */
 	public function getUnVisitedTiles() {
@@ -84,11 +109,11 @@ class Map {
 		$array = [];
 
 		foreach ($this->getUnVisitedTiles() as $tile) {
-			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->containsElement();
+			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->representsElement();
 		}
 
 		foreach ($this->getVisitedTiles() as $tile) {
-			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->containsElement();
+			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->representsElement();
 		}
 
 		return $array;
@@ -98,8 +123,8 @@ class Map {
 	 * @param Position $position
 	 * @return bool
 	 */
-	public function visitTile(Position $position) {
-		if ($this->isValidPosition($position)) {
+	public function visitPosition(Position $position) {
+		if ($this->hasValidPosition($position)) {
 			foreach ($this->unVisitedTiles as $unVisitedTileIndex => $unVisitedTile) {
 				if ($unVisitedTile->isTheSamePosition($position)) {
 
@@ -121,7 +146,7 @@ class Map {
 	 * @param Position $position
 	 * @return bool
 	 */
-	public function isValidPosition(Position $position) {
+	public function hasValidPosition(Position $position) {
 		if ($position->getRow() > $this->getHeight() || $position->getColumn() > $this->getWidth()) {
 			return false;
 		}

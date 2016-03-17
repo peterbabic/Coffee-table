@@ -104,9 +104,9 @@ class PositionTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($northPositionA->isTheSamePosition($NorthPositionB));
 	}
 
-	public function testOpenSpaceNeighbors() {
+	public function testOpenSpaceNeighbours() {
 		$position = new Position(2, 2);
-		// Neighbors from NE to N, in CW direction
+		// Neighbours from NE to N, in CW direction
 		$neighbours = [
 			new Position(1, 3),
 			new Position(2, 3),
@@ -118,18 +118,18 @@ class PositionTest extends \PHPUnit_Framework_TestCase {
 			new Position(1, 2),
 		];
 
-		$this->assertEquals($neighbours, $position->getNeighbors());
+		$this->assertEquals($neighbours, $position->getNeighbouringPositions());
 	}
 
-	public function testCornerNeighbors() {
+	public function testCornerNeighbours() {
 		$position = new Position(1, 1);
-		// Return just E, SE and S neighbors
+		// Return just E, SE and S neighbours
 		$neighbours = [
 			new Position(1, 2),
 			new Position(2, 2),
 			new Position(2, 1),
 		];
 
-		$this->assertEquals($neighbours, $position->getNeighbors());
+		$this->assertEquals($neighbours, $position->getNeighbouringPositions());
 	}
 }
