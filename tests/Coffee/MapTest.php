@@ -51,7 +51,8 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		];
 
 		$map = new Map($description);
-		$this->assertTrue($map->isValidPosition(3, 0));
+		$position = new Position(3, 0);
+		$this->assertTrue($map->isValidPosition($position));
 	}
 
 	public function testInvalidPosition() {
@@ -63,20 +64,8 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		];
 
 		$map = new Map($description);
-		$this->assertFalse($map->isValidPosition(3, 4));
-	}
-
-	public function testVisitedPosition() {
-		$description = [
-			[0, 1, 0, 1],
-			[1, 0, 0, 0],
-			[0, 0, 0, 1],
-			[0, 0, 0, 1]
-		];
-
-		$map = new Map($description);
-		$map->visitPosition(0, 0);
-		$this->assertTrue($map->isVisitedPosition(0, 0));
+		$position = new Position(3, 4);
+		$this->assertFalse($map->isValidPosition($position));
 	}
 
 	public function testUnvisitedPosition() {
@@ -88,8 +77,22 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		];
 
 		$map = new Map($description);
-		$map->visitPosition(0, 0);
-		$this->assertFalse($map->isVisitedPosition(4, 0));
+		$position = new Position(0, 0);
+		$this->assertFalse($map->isVisitedPosition($position));
+	}
+
+	public function testVisitedPosition() {
+		$description = [
+			[0, 1, 0, 1],
+			[1, 0, 0, 0],
+			[0, 0, 0, 1],
+			[0, 0, 0, 1]
+		];
+
+		$map = new Map($description);
+		$position = new Position(0, 0);
+		$map->visitPosition($position);
+		$this->assertTrue($map->isVisitedPosition($position));
 	}
 
 //	public function testNextUnvisitedPosition() {

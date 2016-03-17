@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: delmadord
- * Date: 3/16/16
- * Time: 6:21 PM
- */
 
 namespace Coffee;
 
@@ -60,17 +54,13 @@ class Map {
 		return $this->description;
 	}
 
-//	public function getNextUnvisitedPosition() {
-//		forek
-//}
 	/**
-	 * @param $row
-	 * @param $column
+	 * @param Position $position
 	 * @return bool
 	 */
-	public function visitPosition($row, $column) {
-		if ($this->isValidPosition($row, $column)) {
-			$this->visited[$row][$column] = true;
+	public function visitPosition(Position $position) {
+		if ($this->isValidPosition($position)) {
+			$this->visited[$position->getRow()][$position->getColumn()] = true;
 			return true;
 		}
 
@@ -78,17 +68,16 @@ class Map {
 	}
 
 	/**
-	 * @param $row
-	 * @param $column
+	 * @param Position $position
 	 * @return bool
 	 */
-	public function isValidPosition($row, $column) {
-		if ($row < 0 || $column < 0) {
+	public function isValidPosition(Position $position) {
+		if ($position->getRow() < 0 || $position->getColumn() < 0) {
 			return false;
 		}
 
 		// Map dimensions start from 1 but row/col positions start from 0, need to compensate
-		if ($row >= $this->getHeight() || $column >= $this->getWidth()) {
+		if ($position->getRow() >= $this->getHeight() || $position->getColumn() >= $this->getWidth()) {
 			return false;
 		}
 
@@ -110,16 +99,15 @@ class Map {
 	}
 
 	/**
-	 * @param $row
-	 * @param $column
+	 * @param $position
 	 * @return bool
 	 */
-	public function isVisitedPosition($row, $column) {
-		if (!isset($this->visited[$row][$column])) {
+	public function isVisitedPosition(Position $position) {
+		if (!isset($this->visited[$position->getRow()][$position->getColumn()])) {
 			return false;
 		}
 
-		return ($this->visited[$row][$column] == true);
+		return ($this->visited[$position->getRow()][$position->getColumn()] == true);
 	}
 
 	/**
