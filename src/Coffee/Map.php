@@ -2,8 +2,6 @@
 
 namespace Coffee;
 
-use Exception;
-
 /**
  * Class Map
  *
@@ -11,20 +9,18 @@ use Exception;
  */
 class Map {
 	/**
-	 * @var array
+	 * @var Tile[]
 	 */
-	private $description = [];
+	private $unVisitedTiles = [];
 
 	/**
-	 * @var array
+	 * @var Tile[]
 	 */
-	private $visited = [];
-
+	private $visitedTiles = [];
 	/**
 	 * @var int
 	 */
 	private $height = 0;
-
 	/**
 	 * @var int
 	 */
@@ -33,34 +29,74 @@ class Map {
 	/**
 	 * Map constructor.
 	 *
-	 * @param $description
-	 * @throws Exception
+	 * @param $description [][]  The description must be 2D array containing at least one element
+	 * @throws \Exception
 	 */
 	public function __construct($description) {
-		if (is_null($description) || !is_array($description) || !is_array($description[0])) {
-			throw new Exception('The Coffee Table map could not be loaded.');
+		if (is_null($description) || !is_array($description) || !is_array($description[0]) || count($description[0]) < 1) {
+			throw new \Exception('The Coffee Table map could not be loaded.');
 		}
 
-		$this->width = $this->calculateMapWidth($description);
-		$this->height = $this->calculateMapHeight($description);
+		$height = 0;
+		$width = 0;
 
-		$this->description = $description;
+		// This data processing could be written more read-ably in multiple cycles,
+		// but at a cost of reduced performance (minor).
+		foreach ($description as $mapRowIndex => $mapRow) {
+			foreach ($mapRow as $mapColumnIndex => $mapTileRepresentation) {
+				// All tiles are inherently unvisited at first
+				$this->unVisitedTiles[] = new Tile($mapRowIndex, $mapColumnIndex, $mapTileRepresentation);
+
+				$width = $mapColumnIndex > $width ? $mapColumnIndex : $width;
+			}
+
+			$height = $mapRowIndex > $height ? $mapRowIndex : $height;
+		}
+
+		// We are in a business of one off
+		$this->height = $height + 1;
+		$this->width = $width + 1;
+	}
+
+	/**
+	 * @return Tile[]
+	 */
+	public function getUnVisitedTiles() {
+		return $this->unVisitedTiles;
+	}
+
+	/**
+	 * @return Tile[]
+	 */
+	public function getVisitedTiles() {
+		return $this->visitedTiles;
 	}
 
 	/**
 	 * @return array
 	 */
 	public function describedByArray() {
-		return $this->description;
+//		return $this->unVisited;
+		$array = [];
+
+		foreach ($this->getUnVisitedTiles() as $tile) {
+			$array[$tile->getRow()][$tile->getColumn()] = $tile->containsElement();
+		}
+
+		foreach ($this->getVisitedTiles() as $tile) {
+			$array[$tile->getRow()][$tile->getColumn()] = $tile->containsElement();
+		}
+
+		return $array;
 	}
 
 	/**
 	 * @param Position $position
 	 * @return bool
 	 */
-	public function visitPosition(Position $position) {
+	public function visitTile(Position $position) {
 		if ($this->isValidPosition($position)) {
-			$this->visited[$position->getRow()][$position->getColumn()] = true;
+			$this->visitedTiles[$position->getRow()][$position->getColumn()] = true;
 			return true;
 		}
 
@@ -103,37 +139,12 @@ class Map {
 	 * @return bool
 	 */
 	public function isVisitedPosition(Position $position) {
-		if (!isset($this->visited[$position->getRow()][$position->getColumn()])) {
+		if (!isset($this->visitedTiles[$position->getRow()][$position->getColumn()])) {
 			return false;
 		}
 
-		return ($this->visited[$position->getRow()][$position->getColumn()] == true);
+		return ($this->visitedTiles[$position->getRow()][$position->getColumn()] == true);
 	}
 
-	/**
-	 * @param $description
-	 * @return int
-	 */
-	private function calculateMapWidth($description) {
-		$widestRow = 0;
-		foreach ($description as $row) {
-			// Count the level 2 array elements
-			$colWidth = count($row);
-
-			if ($colWidth > $widestRow) {
-				$widestRow = $colWidth;
-			}
-		}
-		return $widestRow;
-	}
-
-	/**
-	 * @param $description
-	 * @return int
-	 */
-	private function calculateMapHeight($description) {
-		// Count the level 1 array elements
-		return count($description);
-	}
 
 }

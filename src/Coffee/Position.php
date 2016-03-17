@@ -21,8 +21,17 @@ class Position {
 	/**
 	 * @param $row
 	 * @param $column
+	 * @throws \Exception
 	 */
 	function __construct($row, $column) {
+//		if ($row <= 0) {
+//			throw new \Exception('The row argument must be positive non-zero number.');
+//		}
+//
+//		if ($column <= 0) {
+//			throw new \Exception('The columns argument must be positive non-zero number.');
+//		}
+
 		$this->column = $column;
 		$this->row = $row;
 	}
@@ -77,14 +86,14 @@ class Position {
 	 */
 	public function getEastPosition() {
 		return new Position($this->getRow(), $this->getColumn() + 1);
-}
+	}
 
 	/**
 	 * @return Position
 	 */
 	public function getSouthEastPosition() {
 		return new Position($this->getRow() + 1, $this->getColumn() + 1);
-}
+	}
 
 	/**
 	 * @return Position

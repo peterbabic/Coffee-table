@@ -12,17 +12,7 @@ try {
 		[0, 0, 0, 1]
 	]);
 
-	$table = new Table();
-
-	foreach ($map->describedByArray() as $mapRowIndex => $mapRow) {
-		foreach ($mapRow as $mapColumnIndex => $containsCoffee) {
-			if ($containsCoffee == true) {
-				$position = new Position($mapColumnIndex, $mapRowIndex);
-				$spot = new Spot($position);
-				$table->addSpot($spot);
-			}
-		}
-	}
+//	$table = new Table();
 
 	var_dump($map->describedByArray());
 }

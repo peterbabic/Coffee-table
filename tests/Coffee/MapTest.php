@@ -91,7 +91,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 
 		$map = new Map($description);
 		$position = new Position(0, 0);
-		$map->visitPosition($position);
+		$map->visitTile($position);
 		$this->assertTrue($map->isVisitedPosition($position));
 	}
 
