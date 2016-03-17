@@ -7,7 +7,17 @@ namespace Coffee;
  *
  * @package Coffee
  */
+/**
+ * Class Position
+ *
+ * @package Coffee
+ */
 class Position {
+
+	/**
+	 * The lowest possible position for rows and columns
+	 */
+	const LOWER_BOUND = 1;
 
 	/**
 	 * @var int
@@ -24,12 +34,8 @@ class Position {
 	 * @throws \Exception
 	 */
 	function __construct($row, $column) {
-		if ($row <= 0) {
-			throw new \Exception('The row argument must be positive non-zero number.');
-		}
-
-		if ($column <= 0) {
-			throw new \Exception('The columns argument must be positive non-zero number.');
+		if (!$this->fitsIntoLowerBound($row, $column)) {
+			throw new \Exception('The row argument must be higher than ' . self::LOWER_BOUND . '.');
 		}
 
 		$this->column = $column;
@@ -43,6 +49,9 @@ class Position {
 		return $this->column;
 	}
 
+	/**
+	 * @return int
+	 */
 	public function getColumnIndex() {
 		return $this->column - 1;
 	}
@@ -54,6 +63,9 @@ class Position {
 		return $this->row;
 	}
 
+	/**
+	 * @return int
+	 */
 	public function getRowIndex() {
 		return $this->row - 1;
 	}
@@ -86,63 +98,65 @@ class Position {
 	 * @return Position
 	 */
 	public function getNorthEastPosition() {
-		return new Position($this->getRow() - 1, $this->getColumn() + 1);
+		return $this->getSafeNeighbor($this->getRow() - 1, $this->getColumn() + 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getEastPosition() {
-		return new Position($this->getRow(), $this->getColumn() + 1);
+		return $this->getSafeNeighbor($this->getRow(), $this->getColumn() + 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getSouthEastPosition() {
-		return new Position($this->getRow() + 1, $this->getColumn() + 1);
+		return $this->getSafeNeighbor($this->getRow() + 1, $this->getColumn() + 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getSouthPosition() {
-		return new Position($this->getRow() + 1, $this->getColumn());
+		return $this->getSafeNeighbor($this->getRow() + 1, $this->getColumn());
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getSouthWestPosition() {
-		return new Position($this->getRow() + 1, $this->getColumn() - 1);
+		return $this->getSafeNeighbor($this->getRow() + 1, $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getWestPosition() {
-		return new Position($this->getRow(), $this->getColumn() - 1);
+		return $this->getSafeNeighbor($this->getRow(), $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getNorthWestPosition() {
-		return new Position($this->getRow() - 1, $this->getColumn() - 1);
+		return $this->getSafeNeighbor($this->getRow() - 1, $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Position
 	 */
 	public function getNorthPosition() {
-		return new Position($this->getRow() - 1, $this->getColumn());
+		return $this->getSafeNeighbor($this->getRow() - 1, $this->getColumn());
 	}
 
 	/**
 	 * @return array    Neighbors of position from NE to N; CW direction
 	 */
 	public function getNeighbors() {
-		return [
+
+		// null values from out-of-lower-bound neighbors are filtered out and indices are fixed
+		return array_values(array_filter([
 			$this->getNorthEastPosition(),
 			$this->getEastPosition(),
 			$this->getSouthEastPosition(),
@@ -151,7 +165,33 @@ class Position {
 			$this->getWestPosition(),
 			$this->getNorthWestPosition(),
 			$this->getNorthPosition(),
-		];
+		]));
+	}
+
+	/**
+	 * @param $row
+	 * @param $column
+	 * @return bool
+	 */
+	private function fitsIntoLowerBound($row, $column) {
+		if ($row < self::LOWER_BOUND || $column < self::LOWER_BOUND) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * @param $row
+	 * @param $column
+	 * @return Position|null
+	 */
+	private function getSafeNeighbor($row, $column) {
+		if ($this->fitsIntoLowerBound($row, $column)) {
+			return new Position($row, $column);
+		}
+
+		return null;
 	}
 
 }

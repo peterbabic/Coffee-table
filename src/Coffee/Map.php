@@ -42,7 +42,7 @@ class Map {
 		$height = 0;
 		$width = 0;
 
-		// This data processing could be written more read-ably in multiple cycles,
+		// This data processing could be written more read-ably in multiple cycles / private methods,
 		// but at a cost of reduced performance (minor).
 		foreach ($description as $rowIndex => $row) {
 			foreach ($row as $columnIndex => $tileRepresentation) {
@@ -116,14 +116,12 @@ class Map {
 	}
 
 	/**
+	 * Test the upper bound
+	 *
 	 * @param Position $position
 	 * @return bool
 	 */
 	public function isValidPosition(Position $position) {
-		if ($position->getRow() < 0 || $position->getColumn() < 0) {
-			return false;
-		}
-
 		if ($position->getRow() > $this->getHeight() || $position->getColumn() > $this->getWidth()) {
 			return false;
 		}
