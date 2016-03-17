@@ -95,19 +95,4 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($map->isVisitedPosition($position));
 	}
 
-//	public function testNextUnvisitedPosition() {
-//		$description = [
-//			[0, 1, 0, 1],
-//			[1, 0, 0, 0],
-//			[0, 0, 0, 1],
-//			[0, 0, 0, 1]
-//		];
-//
-//		$map = new Map($description);
-//		$map->visitPosition(0, 0);
-//		$map->visitPosition(0, 1);
-//
-//		$position = new Position(0, 2);
-//		$this->assertEquals($position, $map->getNextUnvisitedPosition());
-//	}
 }

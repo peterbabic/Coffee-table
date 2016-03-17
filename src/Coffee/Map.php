@@ -8,6 +8,7 @@ namespace Coffee;
  * @package Coffee
  */
 class Map {
+
 	/**
 	 * @var Tile[]
 	 */
@@ -29,10 +30,11 @@ class Map {
 	/**
 	 * Map constructor.
 	 *
-	 * @param $description [][]  The description must be 2D array containing at least one element
+	 * @param $description [][]
 	 * @throws \Exception
 	 */
 	public function __construct($description) {
+		// The description must be 2D array containing at least one element
 		if (is_null($description) || !is_array($description) || !is_array($description[0]) || count($description[0]) < 1) {
 			throw new \Exception('The Coffee Table map could not be loaded.');
 		}
@@ -79,7 +81,6 @@ class Map {
 	 * @return array
 	 */
 	public function describedByArray() {
-//		return $this->unVisited;
 		$array = [];
 
 		foreach ($this->getUnVisitedTiles() as $tile) {
@@ -99,8 +100,16 @@ class Map {
 	 */
 	public function visitTile(Position $position) {
 		if ($this->isValidPosition($position)) {
-			$this->visitedTiles[$position->getRow()][$position->getColumn()] = true;
-			return true;
+			foreach ($this->unVisitedTiles as $unVisitedTileIndex => $unVisitedTile) {
+				if ($unVisitedTile->isTheSamePosition($position)) {
+
+					// Move Tile from one group to another and reorder
+					$this->visitedTiles[] = $unVisitedTile;
+					array_splice($this->unVisitedTiles, $unVisitedTileIndex, 1);
+
+					return true;
+				}
+			}
 		}
 
 		return false;
@@ -141,12 +150,13 @@ class Map {
 	 * @return bool
 	 */
 	public function isVisitedPosition(Position $position) {
-		if (!isset($this->visitedTiles[$position->getRow()][$position->getColumn()])) {
-			return false;
+		foreach ($this->visitedTiles as $visitedTile) {
+			if ($visitedTile->isTheSamePosition($position)) {
+				return true;
+			}
 		}
 
-		return ($this->visitedTiles[$position->getRow()][$position->getColumn()] == true);
+		return false;
 	}
-
 
 }
