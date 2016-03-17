@@ -18,8 +18,8 @@ try {
 		foreach ($mapRow as $mapColumnIndex => $containsCoffee) {
 			if ($containsCoffee == true) {
 				$tile = new Tile($mapColumnIndex, $mapRowIndex);
-				$spot = new Spot();
-				$spot->addTile($tile);
+				$spot = new Spot($tile);
+//				$spot->addTile($tile);
 				$table->addSpot($spot);
 			}
 

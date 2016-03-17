@@ -9,9 +9,9 @@ class SpotTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetTiles() {
 		$tile = new Tile(2, 1);
-		$spot = new Spot();
-		$spot->addTile($tile);
+		$spot = new Spot([$tile, $tile]);
+//		$spot->addTile($tile);
 
-		$this->assertEquals([$tile], $spot->getTiles());
+		$this->assertEquals([$tile, $tile], $spot->getTiles());
 	}
 }

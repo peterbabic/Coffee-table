@@ -13,6 +13,11 @@ namespace Coffee;
  *
  * @package Coffee
  */
+/**
+ * Class Spot
+ *
+ * @package Coffee
+ */
 class Spot {
 
 	/**
@@ -20,6 +25,27 @@ class Spot {
 	 */
 	private $tiles = [];
 
+	/**
+	 * Spot constructor.
+	 *
+	 * @param Tile|Tile[] $tiles
+	 */
+	public function __construct($tiles = null) {
+		if ($tiles instanceof Tile) {
+			$this->addTile($tiles);
+		}
+
+		if (is_array($tiles)) {
+			foreach ($tiles as $tile) {
+				$this->addTile($tile);
+			}
+		}
+	}
+
+	/**
+	 * @param Tile $tile
+	 * @return bool
+	 */
 	public function addTile(Tile $tile) {
 		if (is_null($tile)) {
 			return false;
