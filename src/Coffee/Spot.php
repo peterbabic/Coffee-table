@@ -21,45 +21,45 @@ namespace Coffee;
 class Spot {
 
 	/**
-	 * @var Tile[]
+	 * @var Position[]
 	 */
-	private $tiles = [];
+	private $positions = [];
+
+//	/**
+//	 * Spot constructor.
+//	 *
+//	 * @param Position|Position[] $positions
+//	 */
+//	public function __construct($positions = null) {
+//		if ($positions instanceof Position) {
+//			$this->addPosition($positions);
+//		}
+//
+//		if (is_array($positions)) {
+//			foreach ($positions as $position) {
+//				$this->addPosition($position);
+//			}
+//		}
+//	}
 
 	/**
-	 * Spot constructor.
-	 *
-	 * @param Tile|Tile[] $tiles
-	 */
-	public function __construct($tiles = null) {
-		if ($tiles instanceof Tile) {
-			$this->addTile($tiles);
-		}
-
-		if (is_array($tiles)) {
-			foreach ($tiles as $tile) {
-				$this->addTile($tile);
-			}
-		}
-	}
-
-	/**
-	 * @param Tile $tile
+	 * @param Position $position
 	 * @return bool
 	 */
-	public function addTile(Tile $tile) {
-		if (is_null($tile)) {
+	public function addPosition(Position $position) {
+		if (is_null($position)) {
 			return false;
 		}
 
-		$this->tiles[] = $tile;
+		$this->positions[] = $position;
 		return true;
 	}
 
 	/**
-	 * @return Tile[]
+	 * @return Position[]
 	 */
-	public function getTiles() {
-		return $this->tiles;
+	public function getPositions() {
+		return $this->positions;
 	}
 
 }

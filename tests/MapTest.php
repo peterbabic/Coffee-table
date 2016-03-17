@@ -2,7 +2,7 @@
 
 namespace Coffee;
 
-// This is not necessary, sice it is bootstrapped but serves for debugging purposes
+// This is not necessary, since it is bootstrapped but serves for debugging purposes
 require __DIR__ . '/../vendor/autoload.php';
 
 class MapTest extends \PHPUnit_Framework_TestCase {
@@ -79,7 +79,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($map->isVisitedPosition(0, 0));
 	}
 
-	public function testNotVisitedPosition() {
+	public function testUnvisitedPosition() {
 		$description = [
 			[0, 1, 0, 1],
 			[1, 0, 0, 0],
@@ -92,4 +92,19 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($map->isVisitedPosition(4, 0));
 	}
 
+//	public function testNextUnvisitedPosition() {
+//		$description = [
+//			[0, 1, 0, 1],
+//			[1, 0, 0, 0],
+//			[0, 0, 0, 1],
+//			[0, 0, 0, 1]
+//		];
+//
+//		$map = new Map($description);
+//		$map->visitPosition(0, 0);
+//		$map->visitPosition(0, 1);
+//
+//		$position = new Position(0, 2);
+//		$this->assertEquals($position, $map->getNextUnvisitedPosition());
+//	}
 }

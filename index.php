@@ -17,8 +17,8 @@ try {
 	foreach ($map->describedByArray() as $mapRowIndex => $mapRow) {
 		foreach ($mapRow as $mapColumnIndex => $containsCoffee) {
 			if ($containsCoffee == true) {
-				$tile = new Tile($mapColumnIndex, $mapRowIndex);
-				$spot = new Spot($tile);
+				$position = new Position($mapColumnIndex, $mapRowIndex);
+				$spot = new Spot($position);
 				$table->addSpot($spot);
 			}
 		}

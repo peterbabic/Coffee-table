@@ -15,23 +15,23 @@ class Table {
 	 */
 	private $spots = [];
 
-	/**
-	 * Table constructor.
-	 *
-	 * @param Spot|Spot[] $spots
-	 */
-	public function __construct($spots = null) {
-		if ($spots instanceof Spot) {
-			$this->addSpot($spots);
-		}
-
-		if (is_array($spots)) {
-			foreach ($spots as $spot) {
-				$this->addSpot($spot);
-			}
-		}
-
-	}
+//	/**
+//	 * Table constructor.
+//	 *
+//	 * @param Spot|Spot[] $spots
+//	 */
+//	public function __construct($spots = null) {
+//		if ($spots instanceof Spot) {
+//			$this->addSpot($spots);
+//		}
+//
+//		if (is_array($spots)) {
+//			foreach ($spots as $spot) {
+//				$this->addSpot($spot);
+//			}
+//		}
+//
+//	}
 
 	/**
 	 * @param Spot $spot

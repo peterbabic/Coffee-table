@@ -2,16 +2,16 @@
 
 namespace Coffee;
 
-// This is not necessary, sice it is bootstrapped but serves for debugging purposes
+// This is not necessary, since it is bootstrapped but serves for debugging purposes
 require __DIR__ . '/../vendor/autoload.php';
 
 class SpotTest extends \PHPUnit_Framework_TestCase {
 
-	public function testGetTiles() {
-		$tile = new Tile(2, 1);
-		$spot = new Spot([$tile, $tile]);
-//		$spot->addTile($tile);
+	public function testGetPositions() {
+		$position = new Position(2, 1);
+		$spot = new Spot();
+		$spot->addPosition($position);
 
-		$this->assertEquals([$tile, $tile], $spot->getTiles());
+		$this->assertEquals([$position], $spot->getPositions());
 	}
 }

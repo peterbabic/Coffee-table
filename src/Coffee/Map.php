@@ -43,7 +43,7 @@ class Map {
 	 * @throws Exception
 	 */
 	public function __construct($description) {
-		if (is_null($description) || !is_array($description)) {
+		if (is_null($description) || !is_array($description) || !is_array($description[0])) {
 			throw new Exception('The Coffee Table map could not be loaded.');
 		}
 
@@ -60,6 +60,9 @@ class Map {
 		return $this->description;
 	}
 
+//	public function getNextUnvisitedPosition() {
+//		forek
+//}
 	/**
 	 * @param $row
 	 * @param $column
@@ -107,6 +110,19 @@ class Map {
 	}
 
 	/**
+	 * @param $row
+	 * @param $column
+	 * @return bool
+	 */
+	public function isVisitedPosition($row, $column) {
+		if (!isset($this->visited[$row][$column])) {
+			return false;
+		}
+
+		return ($this->visited[$row][$column] == true);
+	}
+
+	/**
 	 * @param $description
 	 * @return int
 	 */
@@ -130,19 +146,6 @@ class Map {
 	private function calculateMapHeight($description) {
 		// Count the level 1 array elements
 		return count($description);
-	}
-
-	/**
-	 * @param $row
-	 * @param $column
-	 * @return bool
-	 */
-	public function isVisitedPosition($row, $column) {
-		if (!isset($this->visited[$row][$column])) {
-			return false;
-		}
-
-		return ($this->visited[$row][$column] == true);
 	}
 
 }
