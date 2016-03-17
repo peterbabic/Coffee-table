@@ -7,6 +7,11 @@ namespace Coffee;
  *
  * @package Coffee
  */
+/**
+ * Class Tile
+ *
+ * @package Coffee
+ */
 class Tile extends Position {
 
 	/**
@@ -45,6 +50,13 @@ class Tile extends Position {
 	 */
 	public function representsElement() {
 		return $this->containsElement == self::REPRESENTS_ELEMENT;
+	}
+
+	/**
+	 * @return Position
+	 */
+	public function getPosition() {
+		return new Position($this->getRow(), $this->getColumn());
 	}
 
 }

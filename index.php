@@ -15,8 +15,10 @@ try {
 //	$table = new Table();
 //
 //	foreach ($map->getUnVisitedTiles() as $unVisitedTile) {
+////		$map->vi
 //		foreach ($unVisitedTile->getNeighbouringPositions() as $neighbouringPosition) {
-//			;
+//			$tile = $map->getTileByPosition($neighbouringPosition);
+////			if
 //		}
 //	}
 }
