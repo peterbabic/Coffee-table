@@ -21,7 +21,10 @@ class Map {
 	 */
 	private $description = [];
 
-//	private $visited = [];
+	/**
+	 * @var array
+	 */
+	private $visited = [];
 
 	/**
 	 * @var int
@@ -58,17 +61,17 @@ class Map {
 	}
 
 	/**
-	 * @return int
+	 * @param $row
+	 * @param $column
+	 * @return bool
 	 */
-	public function getHeight() {
-		return $this->height;
-	}
+	public function visitPosition($row, $column) {
+		if ($this->isValidPosition($row, $column)) {
+			$this->visited[$row][$column] = true;
+			return true;
+		}
 
-	/**
-	 * @return int
-	 */
-	public function getWidth() {
-		return $this->width;
+		return false;
 	}
 
 	/**
@@ -90,12 +93,17 @@ class Map {
 	}
 
 	/**
-	 * @param $description
 	 * @return int
 	 */
-	private function calculateMapHeight($description) {
-		// Count the level 1 array elements
-		return count($description);
+	public function getHeight() {
+		return $this->height;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getWidth() {
+		return $this->width;
 	}
 
 	/**
@@ -115,9 +123,26 @@ class Map {
 		return $widestRow;
 	}
 
-//	public function visitPosition($row, $column) {
-//
-//
-//	}
+	/**
+	 * @param $description
+	 * @return int
+	 */
+	private function calculateMapHeight($description) {
+		// Count the level 1 array elements
+		return count($description);
+	}
+
+	/**
+	 * @param $row
+	 * @param $column
+	 * @return bool
+	 */
+	public function isVisitedPosition($row, $column) {
+		if (!isset($this->visited[$row][$column])) {
+			return false;
+		}
+
+		return ($this->visited[$row][$column] == true);
+	}
 
 }

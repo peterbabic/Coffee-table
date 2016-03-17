@@ -65,25 +65,31 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$map = new Map($description);
 		$this->assertFalse($map->isValidPosition(3, 4));
 	}
-//	public function testTileLiesOnTable() {
-//		$tableMap = [
-//			[1, 0],
-//			[0, 1],
-//		];
-//
-//		$table = new Table($tableMap);
-//		$tile = new Tile(0, 0);
-//		$this->assertTrue($table->couldContainTile($tile));
-//	}
-//
-//	public function testTileLiesOutsideTable() {
-//		$tableMap = [
-//			[1, 0],
-//			[0, 1],
-//		];
-//
-//		$table = new Table($tableMap);
-//		$tile = new Tile(2, 1);
-//		$this->assertFalse($table->couldContainTile($tile));
-//	}
+
+	public function testVisitedPosition() {
+		$description = [
+			[0, 1, 0, 1],
+			[1, 0, 0, 0],
+			[0, 0, 0, 1],
+			[0, 0, 0, 1]
+		];
+
+		$map = new Map($description);
+		$map->visitPosition(0, 0);
+		$this->assertTrue($map->isVisitedPosition(0, 0));
+	}
+
+	public function testNotVisitedPosition() {
+		$description = [
+			[0, 1, 0, 1],
+			[1, 0, 0, 0],
+			[0, 0, 0, 1],
+			[0, 0, 0, 1]
+		];
+
+		$map = new Map($description);
+		$map->visitPosition(0, 0);
+		$this->assertFalse($map->isVisitedPosition(4, 0));
+	}
+
 }

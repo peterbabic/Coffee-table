@@ -7,8 +7,6 @@ require __DIR__ . '/../vendor/autoload.php';
 
 class TileTest extends \PHPUnit_Framework_TestCase {
 
-
-
 	public function testTheSameX() {
 		$tileA = new Tile(2, 2);
 		$tileB = new Tile(2, 2);
