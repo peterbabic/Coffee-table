@@ -13,6 +13,12 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($tile->representsElement());
 	}
 
+	public function testRepresentsVoid() {
+		$tile = new Tile(2, 2, Tile::REPRESENTS_VOID);
+
+		$this->assertTrue($tile->representsVoid());
+	}
+
 	public function testGetPosition() {
 		$row = 2;
 		$column = 2;

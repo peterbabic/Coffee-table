@@ -3,12 +3,7 @@
 namespace Coffee;
 
 /**
- * Class Tile
- *
- * @package Coffee
- */
-/**
- * Class Tile
+ * Class Tile Represents the Position on the Map with more properties
  *
  * @package Coffee
  */
@@ -25,7 +20,9 @@ class Tile extends Position {
 	/**
 	 * @var bool
 	 */
-	private $containsElement = false;
+	private $representsElement = false;
+
+//	private $isVisited = false;
 
 	/**
 	 * Tile constructor.
@@ -36,20 +33,24 @@ class Tile extends Position {
 	 * @throws \Exception
 	 */
 	public function __construct($row, $column, $tileRepresentation) {
-		if ($tileRepresentation != self::REPRESENTS_ELEMENT && $tileRepresentation != self::REPRESENTS_VOID) {
+		if (!$this->representsElement() && !$this->representsVoid()) {
 			throw new \Exception('The map contains invalid representations');
 		}
 
 		parent::__construct($row, $column);
 
-		$this->containsElement = $tileRepresentation;
+		$this->representsElement = $tileRepresentation;
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function representsElement() {
-		return $this->containsElement == self::REPRESENTS_ELEMENT;
+		return $this->representsElement == self::REPRESENTS_ELEMENT;
+	}
+
+	public function representsVoid() {
+		return $this->representsElement == self::REPRESENTS_VOID;
 	}
 
 	/**
