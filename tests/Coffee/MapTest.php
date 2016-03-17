@@ -29,7 +29,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$column = 1;
 
 		$position = new Position($row, $column);
-		$tile = new Tile($row, $column, Tile::REPRESENTS_ELEMENT);
+		$tile = new Tile($row, $column, Tile::REPRESENTS_SPOT);
 
 		$this->assertEquals($tile, $map->getTileByPosition($position));
 	}

@@ -109,11 +109,11 @@ class Map {
 		$array = [];
 
 		foreach ($this->getUnVisitedTiles() as $tile) {
-			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->representsElement();
+			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->isRepresentingSpot();
 		}
 
 		foreach ($this->getVisitedTiles() as $tile) {
-			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->representsElement();
+			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->isRepresentingSpot();
 		}
 
 		return $array;

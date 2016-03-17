@@ -7,16 +7,16 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 class TileTest extends \PHPUnit_Framework_TestCase {
 
-	public function testRepresentsElement() {
-		$tile = new Tile(2, 2, Tile::REPRESENTS_ELEMENT);
+	public function testRepresentingSpot() {
+		$tile = new Tile(2, 2, Tile::REPRESENTS_SPOT);
 
-		$this->assertTrue($tile->representsElement());
+		$this->assertTrue($tile->isRepresentingSpot());
 	}
 
-	public function testRepresentsVoid() {
+	public function testRepresentingVoid() {
 		$tile = new Tile(2, 2, Tile::REPRESENTS_VOID);
 
-		$this->assertTrue($tile->representsVoid());
+		$this->assertTrue($tile->isRepresentingVoid());
 	}
 
 	public function testGetPosition() {
@@ -29,4 +29,12 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($position, $tile->getPosition());
 
 	}
+
+	public function testIsVisited() {
+		$tile = new Tile(2, 2, Tile::REPRESENTS_SPOT);
+		$tile->visit();
+
+		$this->assertTrue($tile->isVisited());
+	}
+
 }

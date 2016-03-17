@@ -7,12 +7,17 @@ namespace Coffee;
  *
  * @package Coffee
  */
+/**
+ * Class Tile
+ *
+ * @package Coffee
+ */
 class Tile extends Position {
 
 	/**
 	 * Representation on the map, that element exists on the given tile
 	 */
-	const REPRESENTS_ELEMENT = 1;
+	const REPRESENTS_SPOT = 1;
 	/**
 	 * Representation on the map, that element does not exist on the given tile
 	 */
@@ -22,7 +27,10 @@ class Tile extends Position {
 	 */
 	private $representsElement = false;
 
-//	private $isVisited = false;
+	/**
+	 * @var bool
+	 */
+	private $visited = false;
 
 	/**
 	 * Tile constructor.
@@ -33,7 +41,7 @@ class Tile extends Position {
 	 * @throws \Exception
 	 */
 	public function __construct($row, $column, $tileRepresentation) {
-		if (!$this->representsElement() && !$this->representsVoid()) {
+		if (!$this->isRepresentingSpot() && !$this->isRepresentingVoid()) {
 			throw new \Exception('The map contains invalid representations');
 		}
 
@@ -45,11 +53,28 @@ class Tile extends Position {
 	/**
 	 * @return boolean
 	 */
-	public function representsElement() {
-		return $this->representsElement == self::REPRESENTS_ELEMENT;
+	public function isVisited() {
+		return $this->visited;
 	}
 
-	public function representsVoid() {
+	/**
+	 * Flags this Tile as "visited"
+	 */
+	public function visit() {
+		$this->visited = true;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isRepresentingSpot() {
+		return $this->representsElement == self::REPRESENTS_SPOT;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isRepresentingVoid() {
 		return $this->representsElement == self::REPRESENTS_VOID;
 	}
 
