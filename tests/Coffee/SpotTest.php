@@ -3,7 +3,7 @@
 namespace Coffee;
 
 // This is not necessary, since it is bootstrapped but serves for debugging purposes
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 class SpotTest extends \PHPUnit_Framework_TestCase {
 

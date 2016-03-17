@@ -4,7 +4,7 @@
   },
   "autoload-dev": {
     "psr-0": {
-      "": "tests"
+      "Coffee": "tests"
     }
   },
   "autoload": {

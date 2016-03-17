@@ -13,7 +13,7 @@
 >
     <testsuites>
         <testsuite>
-            <directory>tests</directory>
+            <directory>tests/Coffee</directory>
         </testsuite>
     </testsuites>
 </phpunit>
