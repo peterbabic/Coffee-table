@@ -69,19 +69,20 @@ class Map {
 		return $this->width;
 	}
 
-	/**
-	 * @param $column
-	 * @param $row
-	 * @return bool
-	 */
-	public function removeFromDescription($column, $row) {
-		if (!isset($this->description[$row][$column])) {
-			return false;
-		}
-
-		array_splice($this->description[$row], $column, 1);
-		return true;
-	}
+//	/**
+//	 * @param $row
+//	 * @param $column
+//	 * @return bool
+//	 */
+//	public function removeFromDescription($row, $column) {
+//		if (!isset($this->description[$row][$column])) {
+////			throw new Exception('Could not remove from description at R: '.$row.', C: '.$column);
+//			return false;
+//		}
+//
+//		array_splice($this->description[$row], $column, 1);
+//		return true;
+//	}
 
 	/**
 	 * @param $description

@@ -8,7 +8,7 @@ require __DIR__ . '/../vendor/autoload.php';
 class SpotTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetTiles() {
-		$tile = new Tile(1, 2);
+		$tile = new Tile(2, 1);
 		$spot = new Spot();
 		$spot->addTile($tile);
 

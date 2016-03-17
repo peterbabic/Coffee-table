@@ -33,7 +33,7 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 	public function testNorthEastTile() {
 		$tile = new Tile(2, 2);
 		$northEastTileA = $tile->getNorthEastTile();
-		$northEastTileB = new Tile(3, 1);
+		$northEastTileB = new Tile(1, 3);
 
 		$this->assertTrue($northEastTileA->isTheSameTile($northEastTileB));
 	}
@@ -41,7 +41,7 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 	public function testEastTile() {
 		$tile = new Tile(2, 2);
 		$northTileA = $tile->getEastTile();
-		$NorthTileB = new Tile(3, 2);
+		$NorthTileB = new Tile(2, 3);
 
 		$this->assertTrue($northTileA->isTheSameTile($NorthTileB));
 	}
@@ -57,7 +57,7 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 	public function testSouthTile() {
 		$tile = new Tile(2, 2);
 		$northTileA = $tile->getSouthTile();
-		$NorthTileB = new Tile(2, 3);
+		$NorthTileB = new Tile(3, 2);
 
 		$this->assertTrue($northTileA->isTheSameTile($NorthTileB));
 	}
@@ -65,7 +65,7 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 	public function testsSouthWestTile() {
 		$tile = new Tile(2, 2);
 		$northTileA = $tile->getSouthWestTile();
-		$NorthTileB = new Tile(1, 3);
+		$NorthTileB = new Tile(3, 1);
 
 		$this->assertTrue($northTileA->isTheSameTile($NorthTileB));
 	}
@@ -73,7 +73,7 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 	public function testWestTile() {
 		$tile = new Tile(2, 2);
 		$northTileA = $tile->getWestTile();
-		$NorthTileB = new Tile(1, 2);
+		$NorthTileB = new Tile(2, 1);
 
 		$this->assertTrue($northTileA->isTheSameTile($NorthTileB));
 	}
@@ -89,9 +89,24 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 	public function testNorthTile() {
 		$tile = new Tile(2, 2);
 		$northTileA = $tile->getNorthTile();
-		$NorthTileB = new Tile(2, 1);
+		$NorthTileB = new Tile(1, 2);
 
 		$this->assertTrue($northTileA->isTheSameTile($NorthTileB));
 	}
 
+	public function testNeighbors() {
+		$tile = new Tile(2, 2);
+		$neighbours = [
+			new Tile(1, 3),
+			new Tile(2, 3),
+			new Tile(3, 3),
+			new Tile(3, 2),
+			new Tile(3, 1),
+			new Tile(2, 1),
+			new Tile(1, 1),
+			new Tile(1, 2),
+		];
+
+		$this->assertEquals($neighbours, $tile->getNeighbors());
+	}
 }

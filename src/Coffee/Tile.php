@@ -19,10 +19,10 @@ class Tile {
 	private $row = 0;
 
 	/**
-	 * @param $column
 	 * @param $row
+	 * @param $column
 	 */
-	function __construct($column, $row) {
+	function __construct($row, $column) {
 		$this->column = $column;
 		$this->row = $row;
 	}
@@ -69,56 +69,72 @@ class Tile {
 	 * @return Tile
 	 */
 	public function getNorthEastTile() {
-		return new Tile($this->getColumn() + 1, $this->getRow() - 1);
+		return new Tile($this->getRow() - 1, $this->getColumn() + 1);
 	}
 
 	/**
 	 * @return Tile
 	 */
 	public function getEastTile() {
-		return new Tile($this->getColumn() + 1, $this->getRow());
+		return new Tile($this->getRow(), $this->getColumn() + 1);
 }
 
 	/**
 	 * @return Tile
 	 */
 	public function getSouthEastTile() {
-		return new Tile($this->getColumn() + 1, $this->getRow() + 1);
+		return new Tile($this->getRow() + 1, $this->getColumn() + 1);
 }
 
 	/**
 	 * @return Tile
 	 */
 	public function getSouthTile() {
-		return new Tile($this->getColumn(), $this->getRow() + 1);
+		return new Tile($this->getRow() + 1, $this->getColumn());
 	}
 
 	/**
 	 * @return Tile
 	 */
 	public function getSouthWestTile() {
-		return new Tile($this->getColumn() - 1, $this->getRow() + 1);
+		return new Tile($this->getRow() + 1, $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Tile
 	 */
 	public function getWestTile() {
-		return new Tile($this->getColumn() - 1, $this->getRow());
+		return new Tile($this->getRow(), $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Tile
 	 */
 	public function getNorthWestTile() {
-		return new Tile($this->getColumn() - 1, $this->getRow() - 1);
+		return new Tile($this->getRow() - 1, $this->getColumn() - 1);
 	}
 
 	/**
 	 * @return Tile
 	 */
 	public function getNorthTile() {
-		return new Tile($this->getColumn(), $this->getRow() - 1);
+		return new Tile($this->getRow() - 1, $this->getColumn());
+	}
+
+	/**
+	 * @return array    Neighbors of tile from NE to N; CW direction
+	 */
+	public function getNeighbors() {
+		return [
+			$this->getNorthEastTile(),
+			$this->getEastTile(),
+			$this->getSouthEastTile(),
+			$this->getSouthTile(),
+			$this->getSouthWestTile(),
+			$this->getWestTile(),
+			$this->getNorthWestTile(),
+			$this->getNorthTile(),
+		];
 	}
 
 }

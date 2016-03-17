@@ -30,10 +30,11 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testWidth() {
+		// Even the non-rectangular map descriptions are possible
 		$description = [
 			[0, 1, 0],
 			[1, 0, 0, 0],
-			[0, 0, 0],
+			[0, 0, 0,],
 			[0, 0, 0]
 		];
 
@@ -41,22 +42,27 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(4, $map->getWidth());
 	}
 
-	public function testRemoveFromDescription() {
-		$description = [
-			[1, 0],
-			[0, 1],
-		];
-
-		$map = new Map($description);
-		$map->removeFromDescription(0, 0);
-
-		$descriptionAfterRemove = [
-			[0],
-			[0, 1],
-		];
-
-		$this->assertEquals($descriptionAfterRemove, $map->describedByArray());
-	}
+//	public function testRemoveFromDescription() {
+//		$description = [
+//			[0, 1, 0, 1, 1],
+//			[1, 0, 1, 0, 1],
+//			[0, 0, 0, 1, 0],
+//		];
+//
+//
+//		$map = new Map($description);
+//		$map->removeFromDescription(0, 3);
+//		$map->removeFromDescription(1, 4);
+//		$map->removeFromDescription(2, 2);
+//
+//		$descriptionAfterRemove = [
+//			[0, 1, 0, 1],
+//			[1, 0, 1, 0],
+//			[0, 0, 1, 0],
+//		];
+//
+//		$this->assertEquals($descriptionAfterRemove, $map->describedByArray());
+//	}
 
 //	public function testTileLiesOnTable() {
 //		$tableMap = [
