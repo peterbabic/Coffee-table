@@ -110,6 +110,14 @@ class Map {
 		return $array;
 	}
 
+	public function getNeighboursOfTile(Tile $tile) {
+		$neighbouringTiles = [];
+		foreach ($tile->getNeighbouringPositions() as $neighbouringPosition) {
+			$neighbouringTiles[] = $this->getTileByPosition($neighbouringPosition);
+		}
+		return array_values(array_filter($neighbouringTiles));
+	}
+
 	/**
 	 * @return int
 	 */

@@ -72,16 +72,37 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testWidth() {
-		// Even the non-rectangular map descriptions are possible
 		$description = [
-			[0, 1, 0],
+			[0, 1, 0, 1],
 			[1, 0, 0, 0],
-			[0, 0, 0,],
-			[0, 0, 0]
+			[0, 0, 0, 1],
+			[0, 0, 0, 1]
 		];
 
 		$map = new Map($description);
 		$this->assertEquals(4, $map->getWidth());
+	}
+
+	public function testNeighboursOfTile() {
+		$description = [
+			[0, 1, 0, 1],
+			[1, 0, 0, 0],
+			[0, 0, 0, 1],
+			[0, 0, 0, 1]
+		];
+
+		$map = new Map($description);
+		$position = new Position(4, 4);
+		$tile = $map->getTileByPosition($position);
+
+		$neighbours = [
+			new Tile(4, 3, Tile::REPRESENTS_VOID),
+			new Tile(3, 3, Tile::REPRESENTS_VOID),
+			new Tile(3, 4, Tile::REPRESENTS_SPOT),
+		];
+
+		$this->assertEquals($neighbours, $map->getNeighboursOfTile($tile));
+
 	}
 
 //	public function testValidPosition() {
