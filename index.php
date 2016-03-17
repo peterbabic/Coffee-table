@@ -19,13 +19,8 @@ try {
 			if ($containsCoffee == true) {
 				$tile = new Tile($mapColumnIndex, $mapRowIndex);
 				$spot = new Spot($tile);
-//				$spot->addTile($tile);
 				$table->addSpot($spot);
 			}
-
-//			echo 'R: ' . $mapRowIndex . ', C: ' . $mapColumnIndex . ' = ' . $containsCoffee . ', ';
-//			echo $map->removeFromDescription($mapRowIndex, $mapColumnIndex) ? 'DELETED' : 'not';
-//			echo "<br>\n";
 		}
 	}
 

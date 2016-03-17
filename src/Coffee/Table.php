@@ -23,14 +23,20 @@ class Table {
 
 	/**
 	 * Table constructor.
+	 *
+	 * @param Spot|Spot[] $spots
 	 */
-	public function __construct() {
+	public function __construct($spots = null) {
+		if ($spots instanceof Spot) {
+			$this->addSpot($spots);
+		}
 
-//		foreach ($this->remainingPositions as $rowIndex => $tableRow) {
-//			foreach ($tableRow as $columnIndex => $containsCoffee) {
-//				$this->processPosition($columnIndex, $rowIndex, $containsCoffee);
-//			}
-//		}
+		if (is_array($spots)) {
+			foreach ($spots as $spot) {
+				$this->addSpot($spot);
+			}
+		}
+
 	}
 
 	/**
@@ -59,22 +65,5 @@ class Table {
 	public function getSpotsCount() {
 		return count($this->spots);
 	}
-
-//	/**
-//	 * @param int  $column
-//	 * @param int  $row
-//	 * @param bool $positionContainsCoffee
-//	 */
-//	public function processCoordinate($column, $row, $positionContainsCoffee) {
-//		if ($positionContainsCoffee) {
-//			$tile = new Tile($column, $row);
-//			if ($this->getSpotsCount() == 0) {
-//				$spot = new Spot();
-//				$spot->addTile($tile);
-//			}
-//			else {
-//			}
-//		}
-//	}
 
 }
