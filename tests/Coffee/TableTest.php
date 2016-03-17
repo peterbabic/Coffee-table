@@ -9,7 +9,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetSpots() {
 
-		$position = new Position(0, 0);
+		$position = new Position(1, 1);
 		$spot = new Spot();
 		$table = new Table();
 		$spot->addPosition($position);
@@ -19,7 +19,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 
 	public function testSpotsCount() {
 
-		$position = new Position(0, 0);
+		$position = new Position(1, 1);
 		$spot = new Spot();
 		$table = new Table();
 		$spot->addPosition($position);

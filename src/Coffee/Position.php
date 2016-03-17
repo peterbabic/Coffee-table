@@ -24,13 +24,13 @@ class Position {
 	 * @throws \Exception
 	 */
 	function __construct($row, $column) {
-//		if ($row <= 0) {
-//			throw new \Exception('The row argument must be positive non-zero number.');
-//		}
-//
-//		if ($column <= 0) {
-//			throw new \Exception('The columns argument must be positive non-zero number.');
-//		}
+		if ($row <= 0) {
+			throw new \Exception('The row argument must be positive non-zero number.');
+		}
+
+		if ($column <= 0) {
+			throw new \Exception('The columns argument must be positive non-zero number.');
+		}
 
 		$this->column = $column;
 		$this->row = $row;
@@ -43,11 +43,19 @@ class Position {
 		return $this->column;
 	}
 
+	public function getColumnIndex() {
+		return $this->column - 1;
+	}
+
 	/**
 	 * @return int
 	 */
 	public function getRow() {
 		return $this->row;
+	}
+
+	public function getRowIndex() {
+		return $this->row - 1;
 	}
 
 	/**

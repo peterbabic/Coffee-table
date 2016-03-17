@@ -51,7 +51,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		];
 
 		$map = new Map($description);
-		$position = new Position(3, 0);
+		$position = new Position(3, 1);
 		$this->assertTrue($map->isValidPosition($position));
 	}
 
@@ -64,7 +64,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		];
 
 		$map = new Map($description);
-		$position = new Position(3, 4);
+		$position = new Position(4, 5);
 		$this->assertFalse($map->isValidPosition($position));
 	}
 
@@ -77,7 +77,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		];
 
 		$map = new Map($description);
-		$position = new Position(0, 0);
+		$position = new Position(1, 1);
 		$this->assertFalse($map->isVisitedPosition($position));
 	}
 
@@ -90,7 +90,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		];
 
 		$map = new Map($description);
-		$position = new Position(0, 0);
+		$position = new Position(1, 1);
 		$map->visitTile($position);
 		$this->assertTrue($map->isVisitedPosition($position));
 	}

@@ -42,18 +42,21 @@ class Map {
 
 		// This data processing could be written more read-ably in multiple cycles,
 		// but at a cost of reduced performance (minor).
-		foreach ($description as $mapRowIndex => $mapRow) {
-			foreach ($mapRow as $mapColumnIndex => $mapTileRepresentation) {
+		foreach ($description as $rowIndex => $row) {
+			foreach ($row as $columnIndex => $tileRepresentation) {
 				// All tiles are inherently unvisited at first
-				$this->unVisitedTiles[] = new Tile($mapRowIndex, $mapColumnIndex, $mapTileRepresentation);
+				// Also we need to convert indices to positions
+				$this->unVisitedTiles[] = new Tile($rowIndex + 1, $columnIndex + 1, $tileRepresentation);
 
-				$width = $mapColumnIndex > $width ? $mapColumnIndex : $width;
+				// Find maximum
+				$width = $columnIndex > $width ? $columnIndex : $width;
 			}
 
-			$height = $mapRowIndex > $height ? $mapRowIndex : $height;
+			// Find maximum
+			$height = $rowIndex > $height ? $rowIndex : $height;
 		}
 
-		// We are in a business of one off
+		// Convert indices to dimensions
 		$this->height = $height + 1;
 		$this->width = $width + 1;
 	}
@@ -80,11 +83,11 @@ class Map {
 		$array = [];
 
 		foreach ($this->getUnVisitedTiles() as $tile) {
-			$array[$tile->getRow()][$tile->getColumn()] = $tile->containsElement();
+			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->containsElement();
 		}
 
 		foreach ($this->getVisitedTiles() as $tile) {
-			$array[$tile->getRow()][$tile->getColumn()] = $tile->containsElement();
+			$array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->containsElement();
 		}
 
 		return $array;
@@ -112,8 +115,7 @@ class Map {
 			return false;
 		}
 
-		// Map dimensions start from 1 but row/col positions start from 0, need to compensate
-		if ($position->getRow() >= $this->getHeight() || $position->getColumn() >= $this->getWidth()) {
+		if ($position->getRow() > $this->getHeight() || $position->getColumn() > $this->getWidth()) {
 			return false;
 		}
 

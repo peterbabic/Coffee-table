@@ -7,6 +7,18 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 class PositionTest extends \PHPUnit_Framework_TestCase {
 
+	public function testColumnIndex() {
+		$position = new Position(2, 2);
+
+		$this->assertEquals(1, $position->getColumnIndex());
+	}
+
+	public function testRowIndex() {
+		$position = new Position(2, 2);
+
+		$this->assertEquals(1, $position->getRowIndex());
+	}
+
 	public function testTheSameX() {
 		$positionA = new Position(2, 2);
 		$positionB = new Position(2, 2);
