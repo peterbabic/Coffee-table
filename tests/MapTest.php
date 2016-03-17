@@ -42,8 +42,29 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(4, $map->getWidth());
 	}
 
+	public function testValidPosition() {
+		$description = [
+			[0, 1, 0, 1],
+			[1, 0, 0, 0],
+			[0, 0, 0, 1],
+			[0, 0, 0, 1]
+		];
 
+		$map = new Map($description);
+		$this->assertTrue($map->isValidPosition(3, 0));
+	}
 
+	public function testInvalidPosition() {
+		$description = [
+			[0, 1, 0, 1],
+			[1, 0, 0, 0],
+			[0, 0, 0, 1],
+			[0, 0, 0, 1]
+		];
+
+		$map = new Map($description);
+		$this->assertFalse($map->isValidPosition(3, 4));
+	}
 //	public function testTileLiesOnTable() {
 //		$tableMap = [
 //			[1, 0],

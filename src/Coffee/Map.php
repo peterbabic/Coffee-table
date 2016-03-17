@@ -21,6 +21,8 @@ class Map {
 	 */
 	private $description = [];
 
+//	private $visited = [];
+
 	/**
 	 * @var int
 	 */
@@ -69,20 +71,23 @@ class Map {
 		return $this->width;
 	}
 
-//	/**
-//	 * @param $row
-//	 * @param $column
-//	 * @return bool
-//	 */
-//	public function removeFromDescription($row, $column) {
-//		if (!isset($this->description[$row][$column])) {
-////			throw new Exception('Could not remove from description at R: '.$row.', C: '.$column);
-//			return false;
-//		}
-//
-//		array_splice($this->description[$row], $column, 1);
-//		return true;
-//	}
+	/**
+	 * @param $row
+	 * @param $column
+	 * @return bool
+	 */
+	public function isValidPosition($row, $column) {
+		if ($row < 0 || $column < 0) {
+			return false;
+		}
+
+		// Map dimensions start from 1 but row/col positions start from 0, need to compensate
+		if ($row >= $this->getHeight() || $column >= $this->getWidth()) {
+			return false;
+		}
+
+		return true;
+	}
 
 	/**
 	 * @param $description
@@ -110,21 +115,9 @@ class Map {
 		return $widestRow;
 	}
 
-//	/**
-//	 * @param Tile $tile
-//	 * @return bool
-//	 */
-//	public function couldContainTile(Tile $tile) {
-//		if ($tile->getColumn() < 0 || $tile->getRow() < 0) {
-//			return false;
-//		}
+//	public function visitPosition($row, $column) {
 //
-//		// Dimensions start from 1 but coordinates from 0, need to compensate
-//		if ($tile->getColumn() > ($this->getWidth() - 1) || $tile->getRow() > ($this->getHeight() - 1)) {
-//			return false;
-//		}
 //
-//		return true;
 //	}
 
 }

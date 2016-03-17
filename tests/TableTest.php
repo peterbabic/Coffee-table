@@ -8,10 +8,6 @@ require __DIR__ . '/../vendor/autoload.php';
 class TableTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetSpots() {
-//		$tableMap = [
-//			[1, 0],
-//			[0, 1],
-//		];
 
 		$tile = new Tile(0, 0);
 		$spot = new Spot();
@@ -22,10 +18,6 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSpotsCount() {
-//		$tableMap = [
-//			[1, 0],
-//			[0, 1],
-//		];
 
 		$tile = new Tile(0, 0);
 		$spot = new Spot();

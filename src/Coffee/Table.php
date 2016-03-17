@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: delmadord
- * Date: 3/16/16
- * Time: 7:56 AM
- */
 
 namespace Coffee;
 
