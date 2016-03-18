@@ -7,43 +7,45 @@ namespace Coffee;
  *
  * @package Coffee
  */
+/**
+ * Class Table
+ *
+ * @package Coffee
+ */
 class Table {
-
 
 	/**
 	 * @var Spot[]
 	 */
 	private $spots = [];
 
-//	/**
-//	 * Table constructor.
-//	 *
-//	 * @param Spot|Spot[] $spots
-//	 */
-//	public function __construct($spots = null) {
-//		if ($spots instanceof Spot) {
-//			$this->addSpot($spots);
-//		}
-//
-//		if (is_array($spots)) {
-//			foreach ($spots as $spot) {
-//				$this->addSpot($spot);
-//			}
-//		}
-//
-//	}
-
 	/**
-	 * @param Spot $spot
-	 * @return bool
+	 * Table constructor.
+	 *
+	 * @param Map $map
 	 */
-	public function addSpot(Spot $spot) {
-		if (is_null($spot)) {
-			return false;
-		}
+	public function __construct(Map $map) {
+		foreach ($map->getTiles() as $currentTile) {
 
-		$this->spots[] = $spot;
-		return true;
+			if (!$currentTile->isVisited()) {
+				$currentTile->visit();
+
+				if ($currentTile->isRepresentingSpot()) {
+					$spot = new Spot($currentTile->getPosition());
+
+					foreach ($map->getNeighboursOfTile($currentTile) as $neighbouringTile) {
+						$neighbouringTile->visit();
+
+						if ($neighbouringTile->isRepresentingSpot()) {
+							$spot->addPosition($neighbouringTile->getPosition());
+						}
+					}
+
+					$this->addSpot($spot);
+				}
+			}
+
+		}
 	}
 
 	/**
@@ -58,6 +60,19 @@ class Table {
 	 */
 	public function getSpotsCount() {
 		return count($this->spots);
+	}
+
+	/**
+	 * @param Spot $spot
+	 * @return bool
+	 */
+	protected function addSpot(Spot $spot) {
+		if (is_null($spot)) {
+			return false;
+		}
+
+		$this->spots[] = $spot;
+		return true;
 	}
 
 }

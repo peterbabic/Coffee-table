@@ -5,15 +5,16 @@ namespace Coffee;
 require __DIR__ . '/vendor/autoload.php';
 
 try {
-//	$map = new Map([
-//		[0, 1, 0, 1],
-//		[1, 0, 0, 0],
-//		[0, 0, 0, 1],
-//		[0, 0, 1, 1]
-//	]);
-//
-//
-//	$table = new Table();
+	$map = new Map([
+		[0, 1, 0, 1],
+		[1, 0, 0, 0],
+		[0, 0, 0, 1],
+		[0, 0, 1, 1]
+	]);
+
+	$table = new Table($map);
+
+	var_dump($table->getSpots());
 //
 //	// Foreach cannot be used, we need re-evaluation
 ////	while (list(, $currentTile) = each($map->getUnVisitedTiles())) {
