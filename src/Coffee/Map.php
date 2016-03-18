@@ -145,54 +145,5 @@ class Map {
     public function getWidth() {
         return $this->width;
     }
-//
-//	/**
-//	 * @param Position $position
-//	 * @return bool
-//	 */
-//	public function visitPosition(Position $position) {
-//		if ($this->hasValidPosition($position)) {
-//			foreach ($this->tiles as $unVisitedTileIndex => $unVisitedTile) {
-//				if ($unVisitedTile->isTheSamePosition($position)) {
-//
-//					// Move Tile from one group to another and reorder
-//					$this->visitedTiles[] = $unVisitedTile;
-//					array_splice($this->tiles, $unVisitedTileIndex, 1);
-//
-//					return true;
-//				}
-//			}
-//		}
-//
-//		return false;
-//	}
-//
-//	/**
-//	 * Test the upper bound
-//	 *
-//	 * @param Position $position
-//	 * @return bool
-//	 */
-//	public function hasValidPosition(Position $position) {
-//		if ($position->getRow() > $this->getHeight() || $position->getColumn() > $this->getWidth()) {
-//			return false;
-//		}
-//
-//		return true;
-//	}
-//
-//	/**
-//	 * @param $position
-//	 * @return bool
-//	 */
-//	public function isVisitedPosition(Position $position) {
-//		foreach ($this->visitedTiles as $visitedTile) {
-//			if ($visitedTile->isTheSamePosition($position)) {
-//				return true;
-//			}
-//		}
-//
-//		return false;
-//	}
 
 }

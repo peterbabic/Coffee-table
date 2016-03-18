@@ -8,11 +8,6 @@
 
 namespace Coffee;
 
-    /**
-     * Class Spot
-     *
-     * @package Coffee
-     */
 /**
  * Class Spot
  *
@@ -31,7 +26,9 @@ class Spot {
      * @param Position $position
      */
     public function __construct(Position $position) {
+//        if (!is_null($position)) {
         $this->positions[] = $position;
+//        }
     }
 
     /**
