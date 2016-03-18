@@ -25,22 +25,14 @@ class Spot {
 	 */
 	private $positions = [];
 
-//	/**
-//	 * Spot constructor.
-//	 *
-//	 * @param Position|Position[] $positions
-//	 */
-//	public function __construct($positions = null) {
-//		if ($positions instanceof Position) {
-//			$this->addPosition($positions);
-//		}
-//
-//		if (is_array($positions)) {
-//			foreach ($positions as $position) {
-//				$this->addPosition($position);
-//			}
-//		}
-//	}
+	/**
+	 * Spot constructor.
+	 *
+	 * @param Position $position
+	 */
+	public function __construct(Position $position) {
+		$this->positions[] = $position;
+	}
 
 	/**
 	 * @param Position $position

@@ -23,9 +23,9 @@ class Tile extends Position {
 	 */
 	const REPRESENTS_VOID = 0;
 	/**
-	 * @var bool
+	 * @var integer
 	 */
-	private $representsElement = false;
+	private $representation;
 
 	/**
 	 * Tiles are inherently unvisited
@@ -49,7 +49,7 @@ class Tile extends Position {
 
 		parent::__construct($row, $column);
 
-		$this->representsElement = $tileRepresentation;
+		$this->representation = $tileRepresentation;
 	}
 
 	/**
@@ -61,23 +61,29 @@ class Tile extends Position {
 
 	/**
 	 * Flags this Tile as "visited"
+	 *
+	 * @return bool
 	 */
 	public function visit() {
+		if ($this->isVisited())
+			return false;
+
 		$this->visited = true;
+		return true;
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function isRepresentingSpot() {
-		return $this->representsElement == self::REPRESENTS_SPOT;
+		return $this->representation == self::REPRESENTS_SPOT;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isRepresentingVoid() {
-		return $this->representsElement == self::REPRESENTS_VOID;
+		return $this->representation == self::REPRESENTS_VOID;
 	}
 
 	/**

@@ -83,6 +83,16 @@ class Map {
 		return $array;
 	}
 
+	public function getUnvisitedTile() {
+		foreach ($this->getTiles() as $tile) {
+			if (!$tile->isVisited()) {
+				return $tile;
+			}
+		}
+
+		return false;
+	}
+
 	/**
 	 * @param Position $position
 	 * @return Tile|null
@@ -110,6 +120,10 @@ class Map {
 		return $array;
 	}
 
+	/**
+	 * @param Tile $tile
+	 * @return Tile[]
+	 */
 	public function getNeighboursOfTile(Tile $tile) {
 		$neighbouringTiles = [];
 		foreach ($tile->getNeighbouringPositions() as $neighbouringPosition) {

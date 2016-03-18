@@ -10,9 +10,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 	public function testGetSpots() {
 
 		$position = new Position(1, 1);
-		$spot = new Spot();
+		$spot = new Spot($position);
 		$table = new Table();
-		$spot->addPosition($position);
 		$table->addSpot($spot);
 		$this->assertEquals([$spot], $table->getSpots());
 	}
@@ -20,9 +19,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 	public function testSpotsCount() {
 
 		$position = new Position(1, 1);
-		$spot = new Spot();
+		$spot = new Spot($position);
 		$table = new Table();
-		$spot->addPosition($position);
 		$table->addSpot($spot);
 		$table->addSpot($spot);
 		$this->assertEquals(2, $table->getSpotsCount());

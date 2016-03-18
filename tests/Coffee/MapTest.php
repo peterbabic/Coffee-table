@@ -15,6 +15,22 @@ class MapTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals([$tileA, $tileB], $map->getTiles());
 	}
 
+	public function testUnvisitedTile() {
+		$description = [
+			[1, 0],
+			[0, 1],
+		];
+
+		$map = new Map($description);
+		$tiles = $map->getTiles();
+		$tiles[0]->visit();
+		$tiles[3]->visit();
+
+		$tile = new Tile(1, 2, Tile::REPRESENTS_VOID);
+
+		$this->assertEquals($tile, $map->getUnvisitedTile());
+	}
+
 	public function testUnVisitedTiles() {
 		$description = [
 			[1, 0],

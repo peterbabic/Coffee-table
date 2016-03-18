@@ -12,18 +12,31 @@ try {
 //		[0, 0, 1, 1]
 //	]);
 //
+//
 //	$table = new Table();
 //
-//	foreach ($map->getUnVisitedTiles() as $currentTile) {
+//	// Foreach cannot be used, we need re-evaluation
+////	while (list(, $currentTile) = each($map->getUnVisitedTiles())) {
+////	while (($currentTile = $map->getUnvisitedTile()) == true) {
+//	while (isset($map->getUnVisitedTiles()[0]) && ($currentTile = $map->getUnVisitedTiles()[0]) == true) {
 //		$currentTile->visit();
 //
 //		if ($currentTile->isRepresentingSpot()) {
-//			foreach ($currentTile->getNeighbouringPositions() as $neighbouringPosition) {
-//				$neighbouringTile = $map->getTileByPosition($neighbouringPosition);
+//			$spot = new Spot($currentTile->getPosition());
+//
+//			foreach ($map->getNeighboursOfTile($currentTile) as $neighbouringTile) {
 //				$neighbouringTile->visit();
+//
+//				if ($neighbouringTile->isRepresentingSpot()) {
+//					$spot->addPosition($neighbouringTile->getPosition());
+//				}
 //			}
+//
+//			$table->addSpot($spot);
 //		}
 //	}
+//
+//	var_dump($table);
 }
 catch (\Exception $e) {
 	echo 'Caught exception: ' . $e->getMessage() . "\n";
