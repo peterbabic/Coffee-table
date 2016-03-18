@@ -14,31 +14,30 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 //		$this->assertEquals([$spot], $table->getSpots());
 //	}
 
-	public function testZeroSpotsCount() {
-		$description = [
-			[0, 0],
-			[0, 0],
-		];
+    public function testZeroSpotsCount() {
+        $description = [
+            [0, 0],
+            [0, 0],
+        ];
 
-		$map = new Map($description);
-		$table = new Table($map);
+        $map = new Map($description);
+        $table = new Table($map);
 
-		$this->assertEquals(0, $table->getSpotsCount());
-	}
+        $this->assertEquals(0, $table->getSpotsCount());
+    }
 
-	public function testTwoSingleSpotsCount() {
-		$description = [
-			[0, 1, 0],
-			[0, 0, 0],
-			[1, 0, 0],
-			[0, 0, 0],
-		];
+    public function testTwoSingleSpotsCount() {
+        $description = [
+            [0, 1, 0],
+            [0, 0, 0],
+            [1, 0, 0],
+            [0, 0, 0],
+        ];
 
-		$map = new Map($description);
-		$table = new Table($map);
+        $map = new Map($description);
+        $table = new Table($map);
 
-		$this->assertEquals(2, $table->getSpotsCount());
-	}
-
+        $this->assertEquals(2, $table->getSpotsCount());
+    }
 
 }

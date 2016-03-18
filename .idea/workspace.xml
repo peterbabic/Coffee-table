@@ -4,8 +4,23 @@
     <option name="ANALYZE_TEST_SOURCES" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65f95bb6-3a86-4ed6-841e-441936291ad4" name="Default" comment="BLA BLA BLA">
+    <list default="true" id="65f95bb6-3a86-4ed6-841e-441936291ad4" name="Default" comment="Rework Table constructor">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/coffeetable.iml" afterPath="$PROJECT_DIR$/.idea/coffeetable.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Coffee/Map.php" afterPath="$PROJECT_DIR$/src/Coffee/Map.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Coffee/Position.php" afterPath="$PROJECT_DIR$/src/Coffee/Position.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Coffee/Spot.php" afterPath="$PROJECT_DIR$/src/Coffee/Spot.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Coffee/Table.php" afterPath="$PROJECT_DIR$/src/Coffee/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Coffee/Tile.php" afterPath="$PROJECT_DIR$/src/Coffee/Tile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/Coffee/MapTest.php" afterPath="$PROJECT_DIR$/tests/Coffee/MapTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/Coffee/PositionTest.php" afterPath="$PROJECT_DIR$/tests/Coffee/PositionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/Coffee/SpotTest.php" afterPath="$PROJECT_DIR$/tests/Coffee/SpotTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/Coffee/TableTest.php" afterPath="$PROJECT_DIR$/tests/Coffee/TableTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/Coffee/TileTest.php" afterPath="$PROJECT_DIR$/tests/Coffee/TileTest.php" />
     </list>
     <ignored path="coffeetable.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,21 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0">
-              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Coffee/Table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.333334">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state vertical-scroll-proportion="-17.703703">
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,7 +59,7 @@
       <file leaf-file-name="Spot.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Coffee/Spot.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.666667">
+            <state vertical-scroll-proportion="-12.37037">
               <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
               <folding />
             </state>
@@ -64,7 +69,7 @@
       <file leaf-file-name="Position.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Coffee/Position.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-116.111115">
+            <state vertical-scroll-proportion="-9.703704">
               <caret line="175" column="23" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
               <folding />
             </state>
@@ -74,8 +79,8 @@
       <file leaf-file-name="Map.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Coffee/Map.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0">
-              <caret line="75" column="33" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
+            <state vertical-scroll-proportion="-7.3333335">
+              <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -84,8 +89,28 @@
       <file leaf-file-name="MapTest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/Coffee/MapTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.79752064">
-              <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.28877005">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpotTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Coffee/SpotTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TableTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Coffee/TableTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.6666665">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -94,8 +119,28 @@
       <file leaf-file-name="Tile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Coffee/Tile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.3703704">
+            <state vertical-scroll-proportion="-0.6666667">
               <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TileTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Coffee/TileTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PositionTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Coffee/PositionTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.660378">
+              <caret line="103" column="76" selection-start-line="103" selection-start-column="76" selection-end-line="103" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -108,10 +153,14 @@
       <command text="composer update" />
       <command text="git rm . --cached" />
       <command text="git rm -r . --cached" />
+      <command text="composer update" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -137,22 +186,22 @@
         <option value="$PROJECT_DIR$/tests/SpotTest.php" />
         <option value="$PROJECT_DIR$/tests/TileTest.php" />
         <option value="$PROJECT_DIR$/phpunit.xml" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="/usr/share/nginx/html/coffeetable/src/Coffee/Map.php" />
         <option value="/usr/share/nginx/html/coffeetable/src/Coffee/Tile.php" />
-        <option value="$PROJECT_DIR$/tests/Coffee/PositionTest.php" />
         <option value="$PROJECT_DIR$/src/Coffee/Position.php" />
-        <option value="$PROJECT_DIR$/tests/Coffee/TileTest.php" />
         <option value="/usr/share/nginx/html/coffeetable/src/Coffee/Spot.php" />
-        <option value="$PROJECT_DIR$/tests/Coffee/SpotTest.php" />
         <option value="$PROJECT_DIR$/src/Coffee/Spot.php" />
         <option value="/usr/share/nginx/html/coffeetable/index.php" />
         <option value="$PROJECT_DIR$/src/Coffee/Tile.php" />
-        <option value="$PROJECT_DIR$/tests/Coffee/MapTest.php" />
-        <option value="$PROJECT_DIR$/src/Coffee/Map.php" />
         <option value="$PROJECT_DIR$/src/Coffee/Table.php" />
-        <option value="$PROJECT_DIR$/tests/Coffee/TableTest.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/tests/Coffee/PositionTest.php" />
+        <option value="$PROJECT_DIR$/src/Coffee/Map.php" />
+        <option value="$PROJECT_DIR$/tests/Coffee/MapTest.php" />
+        <option value="$PROJECT_DIR$/tests/Coffee/SpotTest.php" />
+        <option value="$PROJECT_DIR$/tests/Coffee/TableTest.php" />
+        <option value="$PROJECT_DIR$/tests/Coffee/TileTest.php" />
       </list>
     </option>
   </component>
@@ -188,6 +237,11 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/pdepend/pdepend" />
+      <path value="$PROJECT_DIR$/vendor/phpmd/phpmd" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
@@ -275,9 +329,6 @@
             <id>Spelling</id>
           </State>
           <State>
-            <id>UndefinedPHP</id>
-          </State>
-          <State>
             <id>XML</id>
           </State>
           <State>
@@ -286,7 +337,27 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>PhpUndefinedFieldInspection</id>
+            <id>PhpCSValidationInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+    <entry key="Project Default (copy)">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>PHP</id>
+          </State>
+          <State>
+            <id>UnusedPHP</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>MessDetectorValidationInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -395,7 +466,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="replace in pa&#9;ACTION&#9;ReplaceInPath&#10;hist&#9;ACTION&#9;Vcs.ShowTabbedFileHistory&#10;paste&#9;ACTION&#9;EditorPasteSimple&#10;rear &#9;ACTION&#9;RearrangeCode&#10;histor&#9;ACTION&#9;Vcs.ShowTabbedFileHistory&#10;rep in pa&#9;ACTION&#9;ReplaceInPath&#10;replace in&#9;ACTION&#9;ReplaceInPath&#10;rearr&#9;ACTION&#9;RearrangeCode&#10;rea&#9;ACTION&#9;RearrangeCode&#10;orde&#9;null&#9;null&#10;next hi&#9;ACTION&#9;GotoNextError&#10;next&#9;ACTION&#9;GotoNextError&#10;comm cha&#9;ACTION&#9;ChangesView.Commit&#10;comple&#9;ACTION&#9;CodeCompletionGroup&#10;complet&#9;ACTION&#9;CodeCompletionGroup&#10;sear&#9;ACTION&#9;SearchEverywhere&#10;breakpoint&#9;ACTION&#9;ToggleLineBreakpoint&#10;comm ch&#9;ACTION&#9;ChangesView.Commit&#10;smart&#9;ACTION&#9;SmartTypeCompletion&#10;para&#9;ACTION&#9;IntroduceParameter&#10;keyma&#9;ACTION&#9;ChangeKeymap&#10;commit&#9;ACTION&#9;Vcs.CheckCommitMessageSpelling&#10;commit &#9;ACTION&#9;Vcs.CheckCommitMessageSpelling&#10;phpunit&#9;null&#9;null&#10;exte&#9;ACTION&#9;EditorSelectWord&#10;composer&#9;ACTION&#9;ComposerGroup&#10;test&#9;ACTION&#9;RerunTests&#10;rer&#9;ACTION&#9;RerunTests&#10;tests&#9;ACTION&#9;RerunTests&#10;hpunit&#9;ACTION&#9;PhpUnitGenerateTestMethod&#10;phpuni&#9;ACTION&#9;PhpUnitNewTest&#10;rear&#9;ACTION&#9;RearrangeCode" />
+    <property name="SearchEverywhereHistoryKey" value="reform&#9;ACTION&#9;ReformatCode&#10;replace in pa&#9;ACTION&#9;ReplaceInPath&#10;hist&#9;ACTION&#9;Vcs.ShowTabbedFileHistory&#10;paste&#9;ACTION&#9;EditorPasteSimple&#10;rear &#9;ACTION&#9;RearrangeCode&#10;histor&#9;ACTION&#9;Vcs.ShowTabbedFileHistory&#10;rep in pa&#9;ACTION&#9;ReplaceInPath&#10;replace in&#9;ACTION&#9;ReplaceInPath&#10;rearr&#9;ACTION&#9;RearrangeCode&#10;rea&#9;ACTION&#9;RearrangeCode&#10;orde&#9;null&#9;null&#10;next hi&#9;ACTION&#9;GotoNextError&#10;next&#9;ACTION&#9;GotoNextError&#10;comm cha&#9;ACTION&#9;ChangesView.Commit&#10;comple&#9;ACTION&#9;CodeCompletionGroup&#10;complet&#9;ACTION&#9;CodeCompletionGroup&#10;sear&#9;ACTION&#9;SearchEverywhere&#10;breakpoint&#9;ACTION&#9;ToggleLineBreakpoint&#10;comm ch&#9;ACTION&#9;ChangesView.Commit&#10;smart&#9;ACTION&#9;SmartTypeCompletion&#10;para&#9;ACTION&#9;IntroduceParameter&#10;keyma&#9;ACTION&#9;ChangeKeymap&#10;commit&#9;ACTION&#9;Vcs.CheckCommitMessageSpelling&#10;commit &#9;ACTION&#9;Vcs.CheckCommitMessageSpelling&#10;phpunit&#9;null&#9;null&#10;exte&#9;ACTION&#9;EditorSelectWord&#10;composer&#9;ACTION&#9;ComposerGroup&#10;test&#9;ACTION&#9;RerunTests&#10;rer&#9;ACTION&#9;RerunTests&#10;tests&#9;ACTION&#9;RerunTests&#10;hpunit&#9;ACTION&#9;PhpUnitGenerateTestMethod&#10;phpuni&#9;ACTION&#9;PhpUnitNewTest&#10;rear&#9;ACTION&#9;RearrangeCode" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../coffeetable_branch" />
@@ -658,7 +729,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458293744076</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Rework Table constructor">
+      <created>1458293898715</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1458293898715</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -701,12 +778,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3990025" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3316583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32668328" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="355" width="1446" height="188" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23333333" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3840399" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -714,10 +792,31 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3990025" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32668328" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="355" width="1446" height="188" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3840399" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
@@ -735,7 +834,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="USE_COMMIT_MESSAGE_MARGIN" value="true" />
-    <MESSAGE value="Create Spot and SpotTest" />
     <MESSAGE value="Refactor coordinates in Tile from X,Y to col,row" />
     <MESSAGE value="Refactor Table.isValidFortile to couldContainTile" />
     <MESSAGE value="Split Table and Map to the separate classes for decoupling" />
@@ -760,7 +858,8 @@
     <MESSAGE value="Implement Map.getNeighboursOfTile" />
     <MESSAGE value="Rework Tile constructor" />
     <MESSAGE value="BLA BLA BLA" />
-    <option name="LAST_COMMIT_MESSAGE" value="BLA BLA BLA" />
+    <MESSAGE value="Rework Table constructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rework Table constructor" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -928,13 +1027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14438502">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/share/nginx/html/coffeetable/src/Coffee/Map.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47678572">
@@ -1020,38 +1112,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Coffee/Tile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3703704">
-          <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Coffee/Spot.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.666667">
-          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Coffee/Position.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-116.111115">
-          <caret line="175" column="23" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Coffee/Table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.333334">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/bin/phpunit">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3901869">
@@ -1068,18 +1128,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29752067">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Coffee/PositionTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.660378">
+          <caret line="103" column="76" selection-start-line="103" selection-start-column="76" selection-end-line="103" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Coffee/SpotTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Coffee/TableTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6666665">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Coffee/TileTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Coffee/Map.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0">
-          <caret line="75" column="33" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
+        <state vertical-scroll-proportion="-7.3333335">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Coffee/Position.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.703704">
+          <caret line="175" column="23" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Coffee/Spot.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.37037">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Coffee/Table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.703703">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Coffee/Tile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6666667">
+          <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Coffee/MapTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79752064">
-          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.28877005">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>

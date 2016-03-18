@@ -51,57 +51,57 @@ class PositionTest extends \PHPUnit_Framework_TestCase {
 	public function testEastPosition() {
 		$position = new Position(2, 2);
 		$northPositionA = $position->getEastPosition();
-		$NorthPositionB = new Position(2, 3);
+		$northPositionB = new Position(2, 3);
 
-		$this->assertTrue($northPositionA->isTheSamePosition($NorthPositionB));
+		$this->assertTrue($northPositionA->isTheSamePosition($northPositionB));
 	}
 
 	public function testSouthEastPosition() {
 		$position = new Position(2, 2);
 		$northPositionA = $position->getSouthEastPosition();
-		$NorthPositionB = new Position(3, 3);
+		$northPositionB = new Position(3, 3);
 
-		$this->assertTrue($northPositionA->isTheSamePosition($NorthPositionB));
+		$this->assertTrue($northPositionA->isTheSamePosition($northPositionB));
 	}
 
 	public function testSouthPosition() {
 		$position = new Position(2, 2);
 		$northPositionA = $position->getSouthPosition();
-		$NorthPositionB = new Position(3, 2);
+		$northPositionB = new Position(3, 2);
 
-		$this->assertTrue($northPositionA->isTheSamePosition($NorthPositionB));
+		$this->assertTrue($northPositionA->isTheSamePosition($northPositionB));
 	}
 
 	public function testsSouthWestPosition() {
 		$position = new Position(2, 2);
 		$northPositionA = $position->getSouthWestPosition();
-		$NorthPositionB = new Position(3, 1);
+		$northPositionB = new Position(3, 1);
 
-		$this->assertTrue($northPositionA->isTheSamePosition($NorthPositionB));
+		$this->assertTrue($northPositionA->isTheSamePosition($northPositionB));
 	}
 
 	public function testWestPosition() {
 		$position = new Position(2, 2);
 		$northPositionA = $position->getWestPosition();
-		$NorthPositionB = new Position(2, 1);
+		$northPositionB = new Position(2, 1);
 
-		$this->assertTrue($northPositionA->isTheSamePosition($NorthPositionB));
+		$this->assertTrue($northPositionA->isTheSamePosition($northPositionB));
 	}
 
 	public function testNorthWestPosition() {
 		$position = new Position(2, 2);
 		$northPositionA = $position->getNorthWestPosition();
-		$NorthPositionB = new Position(1, 1);
+		$northPositionB = new Position(1, 1);
 
-		$this->assertTrue($northPositionA->isTheSamePosition($NorthPositionB));
+		$this->assertTrue($northPositionA->isTheSamePosition($northPositionB));
 	}
 
 	public function testNorthPosition() {
 		$position = new Position(2, 2);
 		$northPositionA = $position->getNorthPosition();
-		$NorthPositionB = new Position(1, 2);
+		$northPositionB = new Position(1, 2);
 
-		$this->assertTrue($northPositionA->isTheSamePosition($NorthPositionB));
+		$this->assertTrue($northPositionA->isTheSamePosition($northPositionB));
 	}
 
 	public function testOpenSpaceNeighbours() {

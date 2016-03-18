@@ -7,10 +7,10 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 class SpotTest extends \PHPUnit_Framework_TestCase {
 
-	public function testGetPositions() {
-		$position = new Position(2, 1);
-		$spot = new Spot($position);
+    public function testGetPositions() {
+        $position = new Position(2, 1);
+        $spot = new Spot($position);
 
-		$this->assertEquals([$position], $spot->getPositions());
-	}
+        $this->assertEquals([$position], $spot->getPositions());
+    }
 }
