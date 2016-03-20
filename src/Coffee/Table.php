@@ -2,11 +2,11 @@
 
 namespace Coffee;
 
-/**
- * Class Table
- *
- * @package Coffee
- */
+    /**
+     * Class Table
+     *
+     * @package Coffee
+     */
 /**
  * Class Table
  *
@@ -37,15 +37,40 @@ class Table extends Map {
     public function __construct($description) {
 
         parent::__construct($description);
-        $this->recurseMap();
+
+//        if (is_null($this->currentSpot)) {
+//            $tiles = $this->getTiles();
+//        }
+//        else {
+//            $tiles = $this->currentSpot->getQueuedTiles();
+//        }
+//
+//        foreach ($tiles as $rowIndex => $row) {
+//            foreach ($row as $columnIndex => $tile) {
+//                /** @var Tile $tile */
+//                $tile->visit();
+//                if ($tile->isRepresentingSpot()) {
+//                    foreach ($this->getNeighboursOfTile($tile) as $neighbourIndex => $neighbourTile) {
+//                        $neighbourTile->visit();
+//
+//                        if ($tile->isRepresentingSpot()) {
+//
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }
+
+        $this->expandSpotsRecursively();
     }
 
-    /**
-     * @return Spot[]
-     */
-    public function getSpots() {
-        return $this->spots;
-    }
+//    /**
+//     * @return Spot[]
+//     */
+//    public function getSpots() {
+//        return $this->spots;
+//    }
 
     /**
      * @return int
@@ -61,40 +86,42 @@ class Table extends Map {
         return $this->largestSpot;
     }
 
-    /**
-     * @param Tile $searchedPosition
-     * @return int|string
-     */
-    public function getSpotNumberByPosition(Tile $searchedPosition) {
-        // Linear search
-        // TODO: try to find a faster way
-        foreach ($this->getSpots() as $spotIndex => $spot) {
-            foreach ($spot->getTiles() as $position) {
-                if ($searchedPosition->isTheSamePosition($position)) {
-                    return $spotIndex;
-                }
-            }
-        }
-
-        return '';
-    }
+//    /**
+//     * @param Tile $searchedPosition
+//     * @return int|string
+//     */
+//    public function getSpotNumberByPosition(Tile $searchedPosition) {
+//        // Linear search
+//        // TODO: try to find a faster way
+//        foreach ($this->getSpots() as $spotIndex => $spot) {
+//            foreach ($spot->getTiles() as $position) {
+//                if ($searchedPosition->isTheSamePosition($position)) {
+//                    return $spotIndex;
+//                }
+//            }
+//        }
+//
+//        return '';
+//    }
 
     /**
      * @param Tile|null $tile
      */
-    protected function recurseMap($tile = null) {
-        $tiles = $this->getNextTile($tile);
+    protected function expandSpotsRecursively($tile = null) {
+
+        $tiles = $this->getTilePool($tile);
         foreach ($tiles as $currentTile) {
 
+            /** @var Tile $currentTile */
             if (!$currentTile->isVisited()) {
                 $currentTile->visit();
 
                 if ($currentTile->isRepresentingSpot()) {
 
-                    $this->updateCurrentSpot($currentTile->getPosition());
+                    $this->updateCurrentSpot($currentTile);
 
                     // TODO: Replace recursion by iteration
-                    $this->recurseMap($currentTile);
+                    $this->expandSpotsRecursively($currentTile);
 
                     $this->addCurrentSpot();    // (to this table)
 
@@ -105,14 +132,14 @@ class Table extends Map {
     }
 
     /**
-     * @param Tile $position
+     * @param Tile $tile
      */
-    protected function updateCurrentSpot(Tile $position) {
+    protected function updateCurrentSpot(Tile $tile) {
         if (is_null($this->currentSpot)) {
-            $this->currentSpot = new Spot($position);
+            $this->currentSpot = new Spot($tile);
         }
         else {
-            $this->currentSpot->addTile($position);
+            $this->currentSpot->addTile($tile);
         }
     }
 
@@ -135,7 +162,7 @@ class Table extends Map {
      * @param $tile
      * @return Tile[]
      */
-    protected function getNextTile($tile = null) {
+    protected function getTilePool($tile = null) {
         if (is_null($tile)) {
             $tiles = $this->getTiles();
             return $tiles;

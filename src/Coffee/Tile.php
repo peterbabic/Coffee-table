@@ -27,16 +27,13 @@ class Tile extends Position {
      * @var integer
      */
     private $representation;
-
     /**
      * Tiles are inherently unvisited
      * @var bool
      */
     private $visited = false;
-
     /**
      * Zero means that the tile is not in the spot
-     *
      * @var int
      */
     private $spotNumber = 0;
@@ -68,16 +65,9 @@ class Tile extends Position {
 
     /**
      * Flags this Tile as "visited"
-     *
-     * @return bool
      */
     public function visit() {
-        if ($this->isVisited()) {
-            return false;
-        }
-
         $this->visited = true;
-        return true;
     }
 
     /**

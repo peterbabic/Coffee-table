@@ -11,10 +11,13 @@ namespace Coffee;
 class Map {
 
     /**
-     * @var Tile[]
+     * @var Tile[] $tiles
      */
     private $tiles = [];
-
+    /**
+     * @var Tile[][]
+     */
+    private $structuredTiles = [];
     /**
      * @var int
      */
@@ -23,7 +26,6 @@ class Map {
      * @var int
      */
     private $width = 0;
-
     /**
      * @var array[]
      */
@@ -47,7 +49,10 @@ class Map {
         foreach ($description as $rowIndex => $row) {
             foreach ($row as $columnIndex => $tileRepresentation) {
                 // Convert indices to positions
-                $this->tiles[] = new Tile($rowIndex + 1, $columnIndex + 1, $tileRepresentation);
+                $tile = new Tile($rowIndex + 1, $columnIndex + 1, $tileRepresentation);
+
+                $this->tiles[] = $tile;
+                $this->structuredTiles[$rowIndex][$columnIndex] = $tile;
 
                 // Find longest row
                 $width = $columnIndex > $width ? $columnIndex : $width;
@@ -63,6 +68,7 @@ class Map {
 
     /**
      * @return array
+     * TODO: this is probably not used anywhere
      */
     public function getDescription() {
         return $this->description;
@@ -76,15 +82,19 @@ class Map {
     }
 
     /**
-     * @param Tile $position
-     * @return Tile|null
-     * TODO: this might be ambiguous
+     * @return Tile[][]
      */
-    public function getTileByPosition(Tile $position) {
-        foreach ($this->getTiles() as $tile) {
-            if ($tile->isTheSamePosition($position)) {
-                return $tile;
-            }
+    public function getStructuredTiles() {
+        return $this->structuredTiles;
+    }
+
+    /**
+     * @param Position $position
+     * @return Tile|null
+     */
+    public function getTileByPosition(Position $position) {
+        if (isset($this->structuredTiles[$position->getRowIndex()][$position->getColumnIndex()])) {
+            return $this->structuredTiles[$position->getRowIndex()][$position->getColumnIndex()];
         }
 
         return null;
@@ -93,13 +103,13 @@ class Map {
     /**
      * @param Tile $tile
      * @return Tile[]
-     * TODO: this might be ambiguous
      */
     public function getNeighboursOfTile(Tile $tile) {
         $neighbouringTiles = [];
         foreach ($tile->getNeighbouringPositions() as $neighbouringPosition) {
             $neighbouringTiles[] = $this->getTileByPosition($neighbouringPosition);
         }
+
         return array_values(array_filter($neighbouringTiles));
     }
 

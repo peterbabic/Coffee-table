@@ -151,7 +151,7 @@ class Position {
     }
 
     /**
-     * @return array    Positions of neighbours from NE to N; CW direction
+     * @return Position[]    Positions of neighbours from NE to N; CW direction
      */
     public function getNeighbouringPositions() {
 

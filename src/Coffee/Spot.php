@@ -20,7 +20,6 @@ class Spot {
      */
     private $tiles = [];
 
-
     /**
      * Spot constructor.
      *
