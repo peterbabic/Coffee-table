@@ -2,11 +2,7 @@
 
 namespace Coffee;
 
-    /**
-     * Class Table
-     *
-     * @package Coffee
-     */
+
 /**
  * Class Table
  *
@@ -29,6 +25,8 @@ class Table {
      */
     private $currentSpot = null;
 
+    private $largestSize = 0;
+
     /**
      * Table constructor.
      *
@@ -37,7 +35,7 @@ class Table {
     public function __construct(Map $map) {
         $this->map = $map;
 
-        $this->recur();
+        $this->recurseMap();
     }
 
     /**
@@ -55,9 +53,20 @@ class Table {
     }
 
     /**
+     * @return int
+     */
+    public function getLargestSpotSize() {
+        return $this->largestSize;
+    }
+
+    public function getSpotIndexByPosition(Position $position) {
+
+    }
+
+    /**
      * @param Tile|null $tile
      */
-    protected function recur($tile = null) {
+    protected function recurseMap($tile = null) {
         $tiles = $this->getNextTile($tile);
         foreach ($tiles as $currentTile) {
 
@@ -68,20 +77,8 @@ class Table {
 
                     $this->updateCurrentSpot($currentTile->getPosition());
 
-                    // Recursion?
-//                    $tiles = $this->getNextTile($currentTile);
-//                    foreach ($tiles as $neighbouringTile) {
-//
-//                        if (!$neighbouringTile->isVisited()) {
-//                            $neighbouringTile->visit();
-//
-//                            if ($neighbouringTile->isRepresentingSpot()) {
-//                                $this->updateCurrentSpot($neighbouringTile->getPosition());
-//                            }
-//
-//                        }
-//                    }
-                    $this->recur($currentTile);
+                    // Recursion
+                    $this->recurseMap($currentTile);
 
                     $this->addCurrentSpot();
 
@@ -91,6 +88,9 @@ class Table {
         }
     }
 
+    /**
+     * @param Position $position
+     */
     protected function updateCurrentSpot(Position $position) {
         if (is_null($this->currentSpot)) {
             $this->currentSpot = new Spot($position);
@@ -108,6 +108,10 @@ class Table {
             return false;
         }
 
+        $size = $this->currentSpot->getSize();
+        // Maximum size
+        $this->largestSize = $size > $this->largestSize ? $size : $this->largestSize;
+
         $this->spots[] = $this->currentSpot;
         $this->currentSpot = null;
         return true;
@@ -117,7 +121,7 @@ class Table {
      * @param $tile
      * @return Tile[]
      */
-    private function getNextTile($tile = null) {
+    protected function getNextTile($tile = null) {
         if (is_null($tile)) {
             $tiles = $this->map->getTiles();
             return $tiles;

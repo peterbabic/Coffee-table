@@ -103,4 +103,31 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertEquals([$spotA, $spotB], $table->getSpots());
     }
+
+    public function testLargestSpotSize() {
+        $map = new Map([
+            [0, 1, 1, 0, 0],
+            [1, 1, 1, 0, 1],
+            [0, 0, 1, 0, 1],
+            [1, 0, 0, 0, 0],
+        ]);
+
+        $table = new Table($map);
+
+        $this->assertEquals(6, $table->getLargestSpotSize());
+    }
+
+//    public function testSpotIndexByPosition() {
+//        $map = new Map([
+//            [0, 1, 1, 0, 0],
+//            [1, 1, 1, 0, 1],
+//            [0, 0, 1, 0, 1],
+//            [1, 0, 0, 0, 0],
+//        ]);
+//
+//        $table = new Table($map);
+//        $position = new Position(1, 2);
+//
+//        $this->assertEquals(1, $table->getSpotIndexByPosition($position));
+//    }
 }

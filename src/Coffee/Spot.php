@@ -20,15 +20,15 @@ class Spot {
      */
     private $positions = [];
 
+    private $size = 0;
+
     /**
      * Spot constructor.
      *
      * @param Position $position
      */
     public function __construct(Position $position) {
-//        if (!is_null($position)) {
-        $this->positions[] = $position;
-//        }
+        $this->addPosition($position);
     }
 
     /**
@@ -40,6 +40,7 @@ class Spot {
             return false;
         }
 
+        $this->size++;
         $this->positions[] = $position;
         return true;
     }
@@ -49,6 +50,13 @@ class Spot {
      */
     public function getPositions() {
         return $this->positions;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSize() {
+        return $this->size;
     }
 
 }

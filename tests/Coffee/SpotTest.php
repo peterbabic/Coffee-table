@@ -13,4 +13,15 @@ class SpotTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertEquals([$position], $spot->getPositions());
     }
+
+    public function testSize() {
+        $spotA = new Spot(new Position(1, 2));
+        $spotA->addPosition(new Position(1, 3));
+        $spotA->addPosition(new Position(2, 3));
+        $spotA->addPosition(new Position(3, 2));
+        $spotA->addPosition(new Position(4, 1));
+
+        $this->assertEquals(5, $spotA->getSize());
+    }
+
 }
