@@ -13,6 +13,11 @@ namespace Coffee;
  *
  * @package Coffee
  */
+/**
+ * Class Spot
+ *
+ * @package Coffee
+ */
 class Spot {
 
     /**
@@ -56,4 +61,12 @@ class Spot {
         return count($this->tiles);
     }
 
+    /**
+     * @param $number
+     */
+    public function setNumber($number) {
+        foreach ($this->getTiles() as $tile) {
+            $tile->setSpotNumber($number);
+        }
+    }
 }
