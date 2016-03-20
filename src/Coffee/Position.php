@@ -71,26 +71,26 @@ class Position {
     }
 
     /**
-     * @param Tile $position
+     * @param Position $position
      * @return bool
      */
-    public function isTheSameColumn(Tile $position) {
+    public function isTheSameColumn(Position $position) {
         return $this->getColumn() == $position->getColumn();
     }
 
     /**
-     * @param Tile $position
+     * @param Position $position
      * @return bool
      */
-    public function isTheSameRow(Tile $position) {
+    public function isTheSameRow(Position $position) {
         return $this->getRow() == $position->getRow();
     }
 
     /**
-     * @param Tile $position
+     * @param Position $position
      * @return bool
      */
-    public function isTheSamePosition(Tile $position) {
+    public function isTheSamePosition(Position $position) {
         return $this->isTheSameColumn($position) && $this->isTheSameRow($position);
     }
 
@@ -184,11 +184,11 @@ class Position {
     /**
      * @param $row
      * @param $column
-     * @return Tile|null
+     * @return Position|null
      */
     protected function getSafeNeighbourPosition($row, $column) {
         if ($this->fitsIntoLowerBound($row, $column)) {
-            return new Tile($row, $column);
+            return new Position($row, $column);
         }
 
         return null;
