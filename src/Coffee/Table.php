@@ -67,10 +67,21 @@ class Table {
     }
 
     /**
-     * @param Position $position
+     * @param Position $searchedPosition
+     * @return int|null
      */
-    public function getSpotIndexByPosition(Position $position) {
+    public function getSpotIndexByPosition(Position $searchedPosition) {
+        // Linear search
+        // TODO: try to find a faster way
+        foreach ($this->getSpots() as $spotIndex => $spot) {
+            foreach ($spot->getPositions() as $position) {
+                if ($searchedPosition->isTheSamePosition($position)) {
+                    return $spotIndex;
+                }
+            }
+        }
 
+        return null;
     }
 
     /**

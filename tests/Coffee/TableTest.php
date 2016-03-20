@@ -117,17 +117,17 @@ class TableTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(6, $table->getLargestSpot()->getSize());
     }
 
-//    public function testSpotIndexByPosition() {
-//        $map = new Map([
-//            [0, 1, 1, 0, 0],
-//            [1, 1, 1, 0, 1],
-//            [0, 0, 1, 0, 1],
-//            [1, 0, 0, 0, 0],
-//        ]);
-//
-//        $table = new Table($map);
-//        $position = new Position(1, 2);
-//
-//        $this->assertEquals(1, $table->getSpotIndexByPosition($position));
-//    }
+    public function testSpotIndexByPosition() {
+        $map = new Map([
+            [0, 1, 1, 0, 0],
+            [1, 1, 1, 0, 1],
+            [0, 0, 1, 0, 1],
+            [1, 0, 0, 0, 0],
+        ]);
+
+        $table = new Table($map);
+        $position = new Position(4, 1);
+
+        $this->assertEquals(2, $table->getSpotIndexByPosition($position));
+    }
 }
