@@ -114,7 +114,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 
         $table = new Table($map);
 
-        $this->assertEquals(6, $table->getLargestSpotSize());
+        $this->assertEquals(6, $table->getLargestSpot()->getSize());
     }
 
 //    public function testSpotIndexByPosition() {

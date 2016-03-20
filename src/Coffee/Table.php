@@ -2,7 +2,11 @@
 
 namespace Coffee;
 
-
+/**
+ * Class Table
+ *
+ * @package Coffee
+ */
 /**
  * Class Table
  *
@@ -25,7 +29,10 @@ class Table {
      */
     private $currentSpot = null;
 
-    private $largestSize = 0;
+    /**
+     * @var Spot
+     */
+    private $largestSpot = null;
 
     /**
      * Table constructor.
@@ -53,12 +60,15 @@ class Table {
     }
 
     /**
-     * @return int
+     * @return Spot
      */
-    public function getLargestSpotSize() {
-        return $this->largestSize;
+    public function getLargestSpot() {
+        return $this->largestSpot;
     }
 
+    /**
+     * @param Position $position
+     */
     public function getSpotIndexByPosition(Position $position) {
 
     }
@@ -80,7 +90,7 @@ class Table {
                     // Recursion
                     $this->recurseMap($currentTile);
 
-                    $this->addCurrentSpot();
+                    $this->addCurrentSpot();    // (to this table)
 
                 }
             }
@@ -108,9 +118,7 @@ class Table {
             return false;
         }
 
-        $size = $this->currentSpot->getSize();
-        // Maximum size
-        $this->largestSize = $size > $this->largestSize ? $size : $this->largestSize;
+        $this->updateLargestSpot();
 
         $this->spots[] = $this->currentSpot;
         $this->currentSpot = null;
@@ -130,6 +138,20 @@ class Table {
             $tiles = $this->map->getNeighboursOfTile($tile);
             return $tiles;
         }
+    }
+
+    /**
+     * Just a wrapper to have it neat and clean
+     */
+    protected function updateLargestSpot() {
+        if (is_null($this->largestSpot)) {
+            $this->largestSpot = $this->currentSpot;
+        }
+
+        $currentSize = is_null($this->largestSpot) ? 0 : $this->currentSpot->getSize();
+        $largestSize = is_null($this->largestSpot) ? 0 : $this->largestSpot->getSize();
+        // Maximum size
+        $this->largestSpot = $currentSize > $largestSize ? $this->currentSpot : $this->largestSpot;
     }
 
 }

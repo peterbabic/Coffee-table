@@ -19,14 +19,14 @@ class PositionTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(1, $position->getRowIndex());
 	}
 
-	public function testTheSameX() {
+	public function testTheSameColumn() {
 		$positionA = new Position(2, 2);
 		$positionB = new Position(2, 2);
 
 		$this->assertTrue($positionA->isTheSameColumn($positionB));
 	}
 
-	public function testTheSameY() {
+	public function testTheSameRow() {
 		$positionA = new Position(2, 2);
 		$positionB = new Position(2, 2);
 
