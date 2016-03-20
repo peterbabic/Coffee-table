@@ -16,45 +16,45 @@ namespace Coffee;
 class Spot {
 
     /**
-     * @var Position[]
+     * @var Tile[]
      */
-    private $positions = [];
+    private $tiles = [];
 
 
     /**
      * Spot constructor.
      *
-     * @param Position $position
+     * @param Tile $tile
      */
-    public function __construct(Position $position) {
-        $this->addPosition($position);
+    public function __construct(Tile $tile) {
+        $this->addTile($tile);
     }
 
     /**
-     * @param Position $position
+     * @param Tile $tile
      * @return bool
      */
-    public function addPosition(Position $position) {
-        if (is_null($position)) {
+    public function addTile(Tile $tile) {
+        if (is_null($tile)) {
             return false;
         }
 
-        $this->positions[] = $position;
+        $this->tiles[] = $tile;
         return true;
     }
 
     /**
-     * @return Position[]
+     * @return Tile[]
      */
-    public function getPositions() {
-        return $this->positions;
+    public function getTiles() {
+        return $this->tiles;
     }
 
     /**
      * @return int
      */
     public function getSize() {
-        return count($this->positions);
+        return count($this->tiles);
     }
 
 }

@@ -20,6 +20,7 @@ class Tile extends Position {
     const REPRESENTS_SPOT = 1;
     /**
      * Representation on the map, that element does not exist on the given tile
+     * Default option
      */
     const REPRESENTS_VOID = 0;
     /**
@@ -48,7 +49,7 @@ class Tile extends Position {
      * @param $tileRepresentation
      * @throws \Exception
      */
-    public function __construct($row, $column, $tileRepresentation) {
+    public function __construct($row, $column, $tileRepresentation = self::REPRESENTS_VOID) {
         if (!$this->isRepresentingSpot() && !$this->isRepresentingVoid()) {
             throw new \Exception('The map contains invalid representations');
         }
@@ -94,10 +95,10 @@ class Tile extends Position {
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getPosition() {
-        return new Position($this->getRow(), $this->getColumn());
+        return new Tile($this->getRow(), $this->getColumn());
     }
 
     /**

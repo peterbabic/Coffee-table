@@ -62,14 +62,14 @@ class Table extends Map {
     }
 
     /**
-     * @param Position $searchedPosition
+     * @param Tile $searchedPosition
      * @return int|string
      */
-    public function getSpotNumberByPosition(Position $searchedPosition) {
+    public function getSpotNumberByPosition(Tile $searchedPosition) {
         // Linear search
         // TODO: try to find a faster way
         foreach ($this->getSpots() as $spotIndex => $spot) {
-            foreach ($spot->getPositions() as $position) {
+            foreach ($spot->getTiles() as $position) {
                 if ($searchedPosition->isTheSamePosition($position)) {
                     return $spotIndex;
                 }
@@ -105,14 +105,14 @@ class Table extends Map {
     }
 
     /**
-     * @param Position $position
+     * @param Tile $position
      */
-    protected function updateCurrentSpot(Position $position) {
+    protected function updateCurrentSpot(Tile $position) {
         if (is_null($this->currentSpot)) {
             $this->currentSpot = new Spot($position);
         }
         else {
-            $this->currentSpot->addPosition($position);
+            $this->currentSpot->addTile($position);
         }
     }
 

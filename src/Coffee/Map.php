@@ -76,11 +76,11 @@ class Map {
     }
 
     /**
-     * @param Position $position
+     * @param Tile $position
      * @return Tile|null
      * TODO: this might be ambiguous
      */
-    public function getTileByPosition(Position $position) {
+    public function getTileByPosition(Tile $position) {
         foreach ($this->getTiles() as $tile) {
             if ($tile->isTheSamePosition($position)) {
                 return $tile;

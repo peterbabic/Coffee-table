@@ -18,7 +18,7 @@ try {
     foreach ($table->getDescription() as $rowIndex => $row) {
         echo '<tr>' . "\n";
         foreach ($row as $columnIndex => $column) {
-            $position = new Position($rowIndex + 1, $columnIndex + 1);
+            $position = new Tile($rowIndex + 1, $columnIndex + 1);
             echo '<td>' . $table->getSpotNumberByPosition($position) . '</td>' . "\n";
         }
         echo '</tr>' . "\n";

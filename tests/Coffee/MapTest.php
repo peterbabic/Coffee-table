@@ -26,7 +26,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
         $row = 1;
         $column = 1;
 
-        $position = new Position($row, $column);
+        $position = new Tile($row, $column);
         $tile = new Tile($row, $column, Tile::REPRESENTS_SPOT);
 
         $this->assertEquals($tile, $map->getTileByPosition($position));
@@ -65,7 +65,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
         ];
 
         $map = new Map($description);
-        $position = new Position(4, 4);
+        $position = new Tile(4, 4);
         $tile = $map->getTileByPosition($position);
 
         $neighbours = [

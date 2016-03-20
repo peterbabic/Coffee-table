@@ -71,80 +71,80 @@ class Position {
     }
 
     /**
-     * @param Position $position
+     * @param Tile $position
      * @return bool
      */
-    public function isTheSameColumn(Position $position) {
+    public function isTheSameColumn(Tile $position) {
         return $this->getColumn() == $position->getColumn();
     }
 
     /**
-     * @param Position $position
+     * @param Tile $position
      * @return bool
      */
-    public function isTheSameRow(Position $position) {
+    public function isTheSameRow(Tile $position) {
         return $this->getRow() == $position->getRow();
     }
 
     /**
-     * @param Position $position
+     * @param Tile $position
      * @return bool
      */
-    public function isTheSamePosition(Position $position) {
+    public function isTheSamePosition(Tile $position) {
         return $this->isTheSameColumn($position) && $this->isTheSameRow($position);
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getNorthEastPosition() {
         return $this->getSafeNeighbourPosition($this->getRow() - 1, $this->getColumn() + 1);
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getEastPosition() {
         return $this->getSafeNeighbourPosition($this->getRow(), $this->getColumn() + 1);
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getSouthEastPosition() {
         return $this->getSafeNeighbourPosition($this->getRow() + 1, $this->getColumn() + 1);
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getSouthPosition() {
         return $this->getSafeNeighbourPosition($this->getRow() + 1, $this->getColumn());
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getSouthWestPosition() {
         return $this->getSafeNeighbourPosition($this->getRow() + 1, $this->getColumn() - 1);
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getWestPosition() {
         return $this->getSafeNeighbourPosition($this->getRow(), $this->getColumn() - 1);
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getNorthWestPosition() {
         return $this->getSafeNeighbourPosition($this->getRow() - 1, $this->getColumn() - 1);
     }
 
     /**
-     * @return Position
+     * @return Tile
      */
     public function getNorthPosition() {
         return $this->getSafeNeighbourPosition($this->getRow() - 1, $this->getColumn());
@@ -184,11 +184,11 @@ class Position {
     /**
      * @param $row
      * @param $column
-     * @return Position|null
+     * @return Tile|null
      */
     protected function getSafeNeighbourPosition($row, $column) {
         if ($this->fitsIntoLowerBound($row, $column)) {
-            return new Position($row, $column);
+            return new Tile($row, $column);
         }
 
         return null;

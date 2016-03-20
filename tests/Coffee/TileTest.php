@@ -24,7 +24,7 @@ class TileTest extends \PHPUnit_Framework_TestCase {
         $column = 2;
 
         $tile = new Tile($row, $column, Tile::REPRESENTS_VOID);
-        $position = new Position($row, $column);
+        $position = new Tile($row, $column);
 
         $this->assertEquals($position, $tile->getPosition());
 
