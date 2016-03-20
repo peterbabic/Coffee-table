@@ -29,10 +29,16 @@ class Tile extends Position {
 
     /**
      * Tiles are inherently unvisited
-     *
      * @var bool
      */
     private $visited = false;
+
+    /**
+     * Zero means that the tile is not in the spot
+     *
+     * @var int
+     */
+    private $spotNumber = 0;
 
     /**
      * Tile constructor.
@@ -92,6 +98,20 @@ class Tile extends Position {
      */
     public function getPosition() {
         return new Position($this->getRow(), $this->getColumn());
+    }
+
+    /**
+     * @return int
+     */
+    public function getSpotNumber() {
+        return $this->spotNumber;
+    }
+
+    /**
+     * @param int $spotNumber
+     */
+    public function setSpotNumber($spotNumber) {
+        $this->spotNumber = $spotNumber;
     }
 
 }

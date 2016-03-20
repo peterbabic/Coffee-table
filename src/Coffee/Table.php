@@ -98,7 +98,7 @@ class Table {
 
                     $this->updateCurrentSpot($currentTile->getPosition());
 
-                    // Recursion
+                    // TODO: Replace recursion by iteration
                     $this->recurseMap($currentTile);
 
                     $this->addCurrentSpot();    // (to this table)

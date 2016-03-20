@@ -70,28 +70,6 @@ class Map {
         return $this->tiles;
     }
 
-    /**
-     * @return Tile[]
-     */
-    public function getUnvisitedTiles() {
-        $array = [];
-        foreach ($this->getTiles() as $tile) {
-            if (!$tile->isVisited()) {
-                $array[] = $tile;
-            }
-        }
-        return $array;
-    }
-
-    public function getUnvisitedTile() {
-        foreach ($this->getTiles() as $tile) {
-            if (!$tile->isVisited()) {
-                return $tile;
-            }
-        }
-
-        return false;
-    }
 
     /**
      * @param Position $position
