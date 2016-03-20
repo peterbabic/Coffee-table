@@ -68,7 +68,7 @@ class Table {
 
     /**
      * @param Position $searchedPosition
-     * @return int|null
+     * @return int|string
      */
     public function getSpotIndexByPosition(Position $searchedPosition) {
         // Linear search
@@ -81,7 +81,7 @@ class Table {
             }
         }
 
-        return null;
+        return '';
     }
 
     /**
