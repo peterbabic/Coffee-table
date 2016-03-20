@@ -9,31 +9,31 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 
 
     public function testZeroSpotsCount() {
-        $map = new Map([
+        $description = [
             [0, 0],
             [0, 0],
-        ]);
+        ];
 
-        $table = new Table($map);
+        $table = new Table($description);
 
         $this->assertEquals(0, $table->getSpotsCount());
     }
 
     public function testTwoSingleSpotsCount() {
-        $map = new Map([
+        $description = [
             [0, 1, 0],
             [0, 0, 1],
             [1, 0, 0],
             [0, 1, 0],
-        ]);
+        ];
 
-        $table = new Table($map);
+        $table = new Table($description);
 
         $this->assertEquals(2, $table->getSpotsCount());
     }
 
     public function testMultipleLargeSpotsCount() {
-        $map = new Map([
+        $description = [
             [0, 1, 1, 0, 0],
             [0, 0, 1, 0, 1],
             [0, 1, 0, 0, 1],
@@ -41,22 +41,22 @@ class TableTest extends \PHPUnit_Framework_TestCase {
             [1, 0, 0, 1, 1],
             [0, 0, 0, 0, 1],
             [0, 1, 0, 0, 0],
-        ]);
+        ];
 
-        $table = new Table($map);
+        $table = new Table($description);
 
         $this->assertEquals(4, $table->getSpotsCount());
     }
 
     public function testOneSmallSpot() {
-        $map = new Map([
+        $description = [
             [0, 1, 1],
             [0, 0, 0],
             [0, 0, 0],
             [0, 0, 0],
-        ]);
+        ];
 
-        $table = new Table($map);
+        $table = new Table($description);
         $spot = new Spot(new Position(1, 2));
         $spot->addPosition(new Position(1, 3));
 
@@ -64,14 +64,14 @@ class TableTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testOneLargeSpot() {
-        $map = new Map([
+        $description = [
             [0, 1, 1],
             [0, 0, 1],
             [0, 1, 0],
             [1, 0, 0],
-        ]);
+        ];
 
-        $table = new Table($map);
+        $table = new Table($description);
         $spot = new Spot(new Position(1, 2));
         $spot->addPosition(new Position(1, 3));
         $spot->addPosition(new Position(2, 3));
@@ -82,14 +82,14 @@ class TableTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testMultipleLargeSpots() {
-        $map = new Map([
+        $description = [
             [0, 1, 1, 0, 0],
             [0, 0, 1, 0, 1],
             [0, 1, 0, 0, 1],
             [1, 0, 0, 1, 0],
-        ]);
+        ];
 
-        $table = new Table($map);
+        $table = new Table($description);
 
         $spotA = new Spot(new Position(1, 2));
         $spotA->addPosition(new Position(1, 3));
@@ -105,29 +105,29 @@ class TableTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testLargestSpotSize() {
-        $map = new Map([
+        $description = [
             [0, 1, 1, 0, 0],
             [1, 1, 1, 0, 1],
             [0, 0, 1, 0, 1],
             [1, 0, 0, 0, 0],
-        ]);
+        ];
 
-        $table = new Table($map);
+        $table = new Table($description);
 
         $this->assertEquals(6, $table->getLargestSpot()->getSize());
     }
 
-    public function testSpotIndexByPosition() {
-        $map = new Map([
+    public function testSpotNumberByPosition() {
+        $description = [
             [0, 1, 1, 0, 0],
             [1, 1, 1, 0, 1],
             [0, 0, 1, 0, 1],
             [1, 0, 0, 0, 0],
-        ]);
+        ];
 
-        $table = new Table($map);
+        $table = new Table($description);
         $position = new Position(4, 1);
 
-        $this->assertEquals(2, $table->getSpotIndexByPosition($position));
+        $this->assertEquals(2, $table->getSpotNumberByPosition($position));
     }
 }

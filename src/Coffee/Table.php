@@ -12,17 +12,12 @@ namespace Coffee;
  *
  * @package Coffee
  */
-class Table {
+class Table extends Map {
 
     /**
      * @var Spot[]
      */
     private $spots = [];
-
-    /**
-     * @var Map
-     */
-    private $map;
 
     /**
      * @var Spot
@@ -37,11 +32,11 @@ class Table {
     /**
      * Table constructor.
      *
-     * @param Map $map
+     * @param $description [][]
      */
-    public function __construct(Map $map) {
-        $this->map = $map;
+    public function __construct($description) {
 
+        parent::__construct($description);
         $this->recurseMap();
     }
 
@@ -70,7 +65,7 @@ class Table {
      * @param Position $searchedPosition
      * @return int|string
      */
-    public function getSpotIndexByPosition(Position $searchedPosition) {
+    public function getSpotNumberByPosition(Position $searchedPosition) {
         // Linear search
         // TODO: try to find a faster way
         foreach ($this->getSpots() as $spotIndex => $spot) {
@@ -142,11 +137,11 @@ class Table {
      */
     protected function getNextTile($tile = null) {
         if (is_null($tile)) {
-            $tiles = $this->map->getTiles();
+            $tiles = $this->getTiles();
             return $tiles;
         }
         else {
-            $tiles = $this->map->getNeighboursOfTile($tile);
+            $tiles = $this->getNeighboursOfTile($tile);
             return $tiles;
         }
     }

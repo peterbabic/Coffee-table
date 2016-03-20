@@ -15,17 +15,6 @@ class MapTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals([$tileA, $tileB], $map->getTiles());
     }
 
-
-    public function testDescribedByArray() {
-        $description = [
-            [1, 0],
-            [0, 1],
-        ];
-
-        $map = new Map($description);
-        $this->assertEquals($description, $map->describedByArray());
-    }
-
     public function testTileByPosition() {
         $description = [
             [1, 0],

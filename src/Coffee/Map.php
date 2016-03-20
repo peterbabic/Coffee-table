@@ -2,15 +2,11 @@
 
 namespace Coffee;
 
-    /**
-     * Class Map
-     *
-     * @package Coffee
-     */
 /**
  * Class Map
  *
  * @package Coffee
+ * TODO: make class Map abstract
  */
 class Map {
 
@@ -29,6 +25,11 @@ class Map {
     private $width = 0;
 
     /**
+     * @var array[]
+     */
+    private $description = [];
+
+    /**
      * Map constructor.
      *
      * @param $description [][]
@@ -40,27 +41,31 @@ class Map {
             throw new \Exception('The Coffee Table map could not be loaded.');
         }
 
-        $height = 0;
-        $width = 0;
+        $this->description = $description;
 
-        // This data processing could be written more read-ably in multiple cycles / private methods,
-        // but at a cost of reduced performance (minor).
+        $width = 0;
         foreach ($description as $rowIndex => $row) {
             foreach ($row as $columnIndex => $tileRepresentation) {
-                // W need to convert indices to positions
+                // Convert indices to positions
                 $this->tiles[] = new Tile($rowIndex + 1, $columnIndex + 1, $tileRepresentation);
 
-                // Find maximum
+                // Find longest row
                 $width = $columnIndex > $width ? $columnIndex : $width;
             }
 
-            // Find maximum
-            $height = $rowIndex > $height ? $rowIndex : $height;
         }
 
         // Convert indices to dimensions
-        $this->height = $height + 1;
         $this->width = $width + 1;
+        $this->height = count($this->getDescription());
+
+    }
+
+    /**
+     * @return array
+     */
+    public function getDescription() {
+        return $this->description;
     }
 
     /**
@@ -70,10 +75,10 @@ class Map {
         return $this->tiles;
     }
 
-
     /**
      * @param Position $position
      * @return Tile|null
+     * TODO: this might be ambiguous
      */
     public function getTileByPosition(Position $position) {
         foreach ($this->getTiles() as $tile) {
@@ -86,21 +91,9 @@ class Map {
     }
 
     /**
-     * @return array
-     */
-    public function describedByArray() {
-        $array = [];
-
-        foreach ($this->getTiles() as $tile) {
-            $array[$tile->getRowIndex()][$tile->getColumnIndex()] = $tile->isRepresentingSpot();
-        }
-
-        return $array;
-    }
-
-    /**
      * @param Tile $tile
      * @return Tile[]
+     * TODO: this might be ambiguous
      */
     public function getNeighboursOfTile(Tile $tile) {
         $neighbouringTiles = [];
