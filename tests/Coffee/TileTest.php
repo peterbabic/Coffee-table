@@ -19,16 +19,16 @@ class TileTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue($tile->isRepresentingVoid());
     }
 
-    public function testGetPosition() {
-        $row = 2;
-        $column = 2;
-
-        $tile = new Tile($row, $column, Tile::REPRESENTS_VOID);
-        $position = new Tile($row, $column);
-
-        $this->assertEquals($position, $tile->getPosition());
-
-    }
+//    public function testGetPosition() {
+//        $row = 2;
+//        $column = 2;
+//
+//        $tile = new Tile($row, $column, Tile::REPRESENTS_VOID);
+//        $position = new Tile($row, $column);
+//
+//        $this->assertEquals($position, $tile->getPosition());
+//
+//    }
 
     public function testIsVisited() {
         $tile = new Tile(2, 2, Tile::REPRESENTS_SPOT);

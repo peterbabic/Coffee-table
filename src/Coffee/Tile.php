@@ -7,11 +7,6 @@ namespace Coffee;
  *
  * @package Coffee
  */
-/**
- * Class Tile
- *
- * @package Coffee
- */
 class Tile extends Position {
 
     /**
@@ -24,14 +19,18 @@ class Tile extends Position {
      */
     const REPRESENTS_VOID = 0;
     /**
+     * Tiles are inherently unvisited
+     */
+    const DEFAULT_VISITED_STATE = false;
+    /**
      * @var integer
      */
+
     private $representation;
     /**
-     * Tiles are inherently unvisited
      * @var bool
      */
-    private $visited = false;
+    private $visited = self::DEFAULT_VISITED_STATE;
     /**
      * Zero means that the tile is not in the spot
      * @var int
@@ -41,19 +40,25 @@ class Tile extends Position {
     /**
      * Tile constructor.
      *
-     * @param $row
-     * @param $column
-     * @param $tileRepresentation
+     * @param      $row
+     * @param      $column
+     * @param int  $tileRepresentation
+     * @param bool $visited
      * @throws \Exception
      */
-    public function __construct($row, $column, $tileRepresentation = self::REPRESENTS_VOID) {
+    public function __construct($row, $column, $tileRepresentation = self::REPRESENTS_VOID, $visited = self::DEFAULT_VISITED_STATE) {
         if (!$this->isRepresentingSpot() && !$this->isRepresentingVoid()) {
-            throw new \Exception('The map contains invalid representations');
+            throw new \Exception('The map description contains invalid representations.');
+        }
+
+        if (!is_bool($visited)) {
+            throw new \Exception('The visited argument must be boolean.');
         }
 
         parent::__construct($row, $column);
 
         $this->representation = $tileRepresentation;
+        $this->visited = $visited;
     }
 
     /**
@@ -83,13 +88,13 @@ class Tile extends Position {
     public function isRepresentingVoid() {
         return $this->representation == self::REPRESENTS_VOID;
     }
-
-    /**
-     * @return Tile
-     */
-    public function getPosition() {
-        return new Tile($this->getRow(), $this->getColumn());
-    }
+//
+//    /**
+//     * @return Tile
+//     */
+//    public function getPosition() {
+//        return new Tile($this->getRow(), $this->getColumn());
+//    }
 
     /**
      * @return int

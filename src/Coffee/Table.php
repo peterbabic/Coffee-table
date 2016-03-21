@@ -38,39 +38,15 @@ class Table extends Map {
 
         parent::__construct($description);
 
-//        if (is_null($this->currentSpot)) {
-//            $tiles = $this->getTiles();
-//        }
-//        else {
-//            $tiles = $this->currentSpot->getQueuedTiles();
-//        }
-//
-//        foreach ($tiles as $rowIndex => $row) {
-//            foreach ($row as $columnIndex => $tile) {
-//                /** @var Tile $tile */
-//                $tile->visit();
-//                if ($tile->isRepresentingSpot()) {
-//                    foreach ($this->getNeighboursOfTile($tile) as $neighbourIndex => $neighbourTile) {
-//                        $neighbourTile->visit();
-//
-//                        if ($tile->isRepresentingSpot()) {
-//
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }
-
         $this->expandSpotsRecursively();
     }
 
-//    /**
-//     * @return Spot[]
-//     */
-//    public function getSpots() {
-//        return $this->spots;
-//    }
+    /**
+     * @return Spot[]
+     */
+    public function getSpots() {
+        return $this->spots;
+    }
 
     /**
      * @return int
@@ -86,31 +62,13 @@ class Table extends Map {
         return $this->largestSpot;
     }
 
-//    /**
-//     * @param Tile $searchedPosition
-//     * @return int|string
-//     */
-//    public function getSpotNumberByPosition(Tile $searchedPosition) {
-//        // Linear search
-//        // TODO: try to find a faster way
-//        foreach ($this->getSpots() as $spotIndex => $spot) {
-//            foreach ($spot->getTiles() as $position) {
-//                if ($searchedPosition->isTheSamePosition($position)) {
-//                    return $spotIndex;
-//                }
-//            }
-//        }
-//
-//        return '';
-//    }
-
     /**
      * @param Tile|null $tile
      */
     protected function expandSpotsRecursively($tile = null) {
 
-        $tiles = $this->getTilePool($tile);
-        foreach ($tiles as $currentTile) {
+        // Either get Tiles from Map if root or from neighbours if called recursively with argument
+        foreach ($this->getTilePool($tile) as $currentTile) {
 
             /** @var Tile $currentTile */
             if (!$currentTile->isVisited()) {
@@ -118,44 +76,19 @@ class Table extends Map {
 
                 if ($currentTile->isRepresentingSpot()) {
 
+                    // Either form a new Spot or add current Tile to the existing one
                     $this->updateCurrentSpot($currentTile);
 
                     // TODO: Replace recursion by iteration
                     $this->expandSpotsRecursively($currentTile);
 
-                    $this->addCurrentSpot();    // (to this table)
+                    // No other neighbouring tiles were found
+                    $this->finishCurrentSpot();
 
                 }
             }
 
         }
-    }
-
-    /**
-     * @param Tile $tile
-     */
-    protected function updateCurrentSpot(Tile $tile) {
-        if (is_null($this->currentSpot)) {
-            $this->currentSpot = new Spot($tile);
-        }
-        else {
-            $this->currentSpot->addTile($tile);
-        }
-    }
-
-    /**
-     * @return bool
-     */
-    protected function addCurrentSpot() {
-        if (is_null($this->currentSpot)) {
-            return false;
-        }
-
-        $this->updateLargestSpot();
-
-        $this->spots[] = $this->currentSpot;
-        $this->currentSpot = null;
-        return true;
     }
 
     /**
@@ -174,9 +107,32 @@ class Table extends Map {
     }
 
     /**
-     * Just a wrapper to have it neat and clean
+     * @param Tile $tile
      */
-    protected function updateLargestSpot() {
+    private function updateCurrentSpot(Tile $tile) {
+        if (is_null($this->currentSpot)) {
+            $this->currentSpot = new Spot($tile);
+        }
+        else {
+            $this->currentSpot->addTile($tile);
+        }
+    }
+
+    private function finishCurrentSpot() {
+        // Do the finishing process only on the started Spots
+        if (is_null($this->currentSpot)) {
+            return;
+        }
+
+        $this->updateLargestSpot();
+        // The Spots are numbered from 1
+        $this->currentSpot->setNumber($this->getSpotsCount() + 1);
+
+        $this->spots[] = $this->currentSpot;
+        $this->currentSpot = null;
+    }
+
+    private function updateLargestSpot() {
         if (is_null($this->largestSpot)) {
             $this->largestSpot = $this->currentSpot;
         }

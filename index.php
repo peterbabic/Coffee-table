@@ -14,16 +14,19 @@ try {
 
     $table = new Table($map);
 
-    echo '<table>';
-    foreach ($table->getTiles() as $row) {
+    echo '<table>' . "\n";
+    foreach ($table->getStructuredTiles() as $row) {
         echo '<tr>' . "\n";
         /** @var Tile $tile */
         foreach ($row as $tile) {
-            echo '<td>' . $tile->getSpotNumber() . '</td>' . "\n";
+            $formattedTile = $tile->getSpotNumber() == 0 ? '' : $tile->getSpotNumber();
+            echo '<td>' . $formattedTile . '</td>' . "\n";
         }
         echo '</tr>' . "\n";
     }
-    echo '</table>';
+    echo '</table>' . "\n";
+
+//    echo 'Najväčšia kávová kaluž je s číslom '.$table->getLargestSpot()->ge
 
 }
 catch (\Exception $e) {
