@@ -26,6 +26,11 @@ class Spot {
     private $tiles = [];
 
     /**
+     * @var int
+     */
+    private $number = 0;
+
+    /**
      * Spot constructor.
      *
      * @param Tile $tile
@@ -62,9 +67,18 @@ class Spot {
     }
 
     /**
-     * @param $number
+     * @return int
+     */
+    public function getNumber() {
+        return $this->number;
+    }
+
+    /**
+     * @param int $number
      */
     public function setNumber($number) {
+        $this->number = $number;
+
         foreach ($this->getTiles() as $tile) {
             $tile->setSpotNumber($number);
         }

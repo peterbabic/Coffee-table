@@ -28,9 +28,7 @@ class SpotTest extends \PHPUnit_Framework_TestCase {
         $spot = new Spot(new Tile(1, 2));
         $spot->setNumber(3);
 
-        $tiles = $spot->getTiles();
-
-        $this->assertEquals(3, $tiles[0]->getSpotNumber());
+        $this->assertEquals(3, $spot->getNumber());
     }
 
 }
