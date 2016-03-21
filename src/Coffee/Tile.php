@@ -88,16 +88,10 @@ class Tile extends Position {
     public function isRepresentingVoid() {
         return $this->representation == self::REPRESENTS_VOID;
     }
-//
-//    /**
-//     * @return Tile
-//     */
-//    public function getPosition() {
-//        return new Tile($this->getRow(), $this->getColumn());
-//    }
 
     /**
      * @return int
+     * TODO: rework this to store parent object instead of just number
      */
     public function getSpotNumber() {
         return $this->spotNumber;
