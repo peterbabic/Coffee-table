@@ -32,10 +32,11 @@ class Tile extends Position {
      */
     private $visited = self::DEFAULT_VISITED_STATE;
     /**
-     * Zero means that the tile is not in the spot
-     * @var int
+     * Spot that this Tile belongs to
+     *
+     * @var Spot
      */
-    private $spotNumber = 0;
+    private $spot = null;
 
     /**
      * Tile constructor.
@@ -59,6 +60,20 @@ class Tile extends Position {
 
         $this->representation = $tileRepresentation;
         $this->visited = $visited;
+    }
+
+    /**
+     * @return Spot
+     */
+    public function getSpot() {
+        return $this->spot;
+    }
+
+    /**
+     * @param Spot $spot
+     */
+    public function setSpot(Spot $spot) {
+        $this->spot = $spot;
     }
 
     /**
@@ -89,19 +104,5 @@ class Tile extends Position {
         return $this->representation == self::REPRESENTS_VOID;
     }
 
-    /**
-     * @return int
-     * TODO: rework this to store parent object instead of just number
-     */
-    public function getSpotNumber() {
-        return $this->spotNumber;
-    }
-
-    /**
-     * @param int $spotNumber
-     */
-    public function setSpotNumber($spotNumber) {
-        $this->spotNumber = $spotNumber;
-    }
 
 }

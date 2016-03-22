@@ -28,7 +28,7 @@ class Spot {
     /**
      * @var int
      */
-    private $number = 0;
+    private $number;
 
     /**
      * Spot constructor.
@@ -48,6 +48,7 @@ class Spot {
             return false;
         }
 
+        $tile->setSpot($this);
         $this->tiles[] = $tile;
         return true;
     }
@@ -78,9 +79,5 @@ class Spot {
      */
     public function setNumber($number) {
         $this->number = $number;
-
-        foreach ($this->getTiles() as $tile) {
-            $tile->setSpotNumber($number);
-        }
     }
 }

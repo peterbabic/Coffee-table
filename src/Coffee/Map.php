@@ -68,7 +68,6 @@ class Map {
 
     /**
      * @return array
-     * TODO: this is probably not used anywhere
      */
     public function getDescription() {
         return $this->description;

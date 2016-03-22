@@ -58,8 +58,14 @@ try {
         echo '<tr>' . "\n";
         /** @var Tile $tile */
         foreach ($tileRow as $tile) {
-            $spotNumber = $tile->getSpotNumber();
-            $attribute = $spotNumber == 0 ? '' : ' class="coffee"';
+            $spotNumber = 0;
+            $attribute = '';
+
+            if (!is_null($tile->getSpot())) {
+                $spotNumber = $tile->getSpot()->getNumber();
+                $attribute = ' class="coffee"';
+            }
+
             echo '<td' . $attribute . '>' . $spotNumber . '</td>' . "\n";
         }
         echo '</tr>' . "\n";

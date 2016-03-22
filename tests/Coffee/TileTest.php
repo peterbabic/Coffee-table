@@ -28,9 +28,10 @@ class TileTest extends \PHPUnit_Framework_TestCase {
 
     public function testSpotNumber() {
         $tile = new Tile(2, 2, Tile::REPRESENTS_SPOT);
-        $tile->setSpotNumber(4);
+        $tile->setSpot(new Spot($tile));
+        $tile->getSpot()->setNumber(4);
 
-        $this->assertEquals(4, $tile->getSpotNumber());
+        $this->assertEquals(4, $tile->getSpot()->getNumber());
     }
 
 }
