@@ -71,11 +71,17 @@ try {
         echo '</tr>' . "\n";
     }
     echo '</table>' . "\n";
-
     echo '</br>' . "\n";
 
-    echo 'Najväčšia kávová kaluž je s číslom ' . $table->getLargestSpot()->getNumber() . '<br>' . "\n";
-    echo 'Kaluž je veľká ' . $table->getLargestSpot()->getSize() . ' políčok.</br>' . "\n";
+    echo 'Najväčšia kávová kaluž je s číslom ';
+    $numbers = '';
+    $delimiter = ', ';
+    foreach ($table->getLargestSpots() as $spot) {
+        $numbers .= $spot->getNumber() . $delimiter;
+    }
+    echo rtrim($numbers, $delimiter) . '<br>' . "\n";
+
+    echo 'Kaluž je veľká ' . $table->getFirstLargestSpot()->getSize() . ' políčok.</br>' . "\n";
     echo 'Počet kaluží je: ' . $table->getSpotsCount() . '<br>' . "\n";
 }
 catch (\Exception $e) {
