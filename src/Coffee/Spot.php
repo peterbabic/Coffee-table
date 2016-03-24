@@ -8,11 +8,11 @@
 
 namespace Coffee;
 
-/**
- * Class Spot
- *
- * @package Coffee
- */
+    /**
+     * Class Spot
+     *
+     * @package Coffee
+     */
 /**
  * Class Spot
  *
@@ -35,8 +35,10 @@ class Spot {
      *
      * @param Tile $tile
      */
-    public function __construct(Tile $tile) {
-        $this->addTile($tile);
+    public function __construct(Tile $tile = null) {
+        if (!is_null($tile)) {
+            $this->addTile($tile);
+        }
     }
 
     /**

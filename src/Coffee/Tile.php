@@ -64,8 +64,13 @@ class Tile extends Position {
 
     /**
      * @return Spot
+     * @throws \Exception
      */
     public function getSpot() {
+        if (is_null($this->spot)) {
+            throw new \Exception('This tile does not belong to any spot.');
+        }
+        
         return $this->spot;
     }
 
@@ -103,6 +108,5 @@ class Tile extends Position {
     public function isRepresentingVoid() {
         return $this->representation == self::REPRESENTS_VOID;
     }
-
 
 }

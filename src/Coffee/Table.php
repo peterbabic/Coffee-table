@@ -10,14 +10,24 @@ namespace Coffee;
 class Table extends Map {
 
     /**
+     * Since spot numbering starts from 1, 0 is a good candidate
+     */
+    const VOID_SPOT_NUMBER = 0;
+
+    /**
      * @var Spot[]
      */
     private $spots = [];
 
     /**
-     * @var Spot
+     * @var Spot|null
      */
     private $currentSpot = null;
+
+    /**
+     * @var Spot|null
+     */
+    private $voidSpot = null;
 
     /**
      * @var Spot[]
@@ -37,6 +47,8 @@ class Table extends Map {
     public function __construct($description) {
 
         parent::__construct($description);
+        $this->voidSpot = new Spot();
+        $this->voidSpot->setNumber(self::VOID_SPOT_NUMBER);
 
         $this->tileStack = new Stack();
         $this->tileStack->push(array_reverse($this->getTiles()));
@@ -48,6 +60,7 @@ class Table extends Map {
             if ($tile->isRepresentingVoid()) {
                 $tile->visit();
                 $this->finishCurrentSpot();
+                $this->voidSpot->addTile($tile);
                 continue;
             }
 
@@ -87,9 +100,14 @@ class Table extends Map {
 
     /**
      * @return Spot[]
+     * @throws \Exception
      */
     public
     function getLargestSpots() {
+        if (empty($this->largestSpots)) {
+            throw new \Exception('There are no spots in this table.');
+        }
+
         return $this->largestSpots;
     }
 
@@ -97,11 +115,7 @@ class Table extends Map {
      * @return Spot
      */
     public function getFirstLargestSpot() {
-        if (empty($this->largestSpots)) {
-            return null;
-        }
-
-        return $this->largestSpots[0];
+        return $this->getLargestSpots()[0];
     }
 
     /**

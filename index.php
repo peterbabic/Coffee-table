@@ -2,6 +2,7 @@
 
 namespace Coffee;
 
+// If 'vendor/' folder does not exist, please run 'composer install'
 require __DIR__ . '/vendor/autoload.php';
 
 try {
@@ -58,13 +59,13 @@ try {
         echo '<tr>' . "\n";
         /** @var Tile $tile */
         foreach ($tileRow as $tile) {
-            $spotNumber = 0;
-            $attribute = '';
 
-            if (!is_null($tile->getSpot())) {
-                $spotNumber = $tile->getSpot()->getNumber();
+            $attribute = '';
+            if ($tile->isRepresentingSpot()) {
                 $attribute = ' class="coffee"';
             }
+
+            $spotNumber = $tile->getSpot()->getNumber();
 
             echo '<td' . $attribute . '>' . $spotNumber . '</td>' . "\n";
         }
@@ -73,6 +74,7 @@ try {
     echo '</table>' . "\n";
     echo '</br>' . "\n";
 
+    // TODO: introduce i18n/pluralism
     echo 'Najväčšia kávová kaluž je s číslom ';
     $numbers = '';
     $delimiter = ', ';
@@ -86,6 +88,7 @@ try {
 }
 catch (\Exception $e) {
     // TODO: provide more information, like the file:line for example
+    echo '</br>' . "\n";
     echo 'Caught exception: ' . $e->getMessage() . "\n";
 }
 
