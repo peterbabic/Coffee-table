@@ -75,7 +75,7 @@ try {
     echo '</br>' . "\n";
 
     // TODO: introduce i18n/pluralism
-    echo 'Najväčšia kávová kaluž je s číslom ';
+    echo 'The biggest coffee spot is of number ';
     $numbers = '';
     $delimiter = ', ';
     foreach ($table->getLargestSpots() as $spot) {
@@ -83,8 +83,8 @@ try {
     }
     echo rtrim($numbers, $delimiter) . '<br>' . "\n";
 
-    echo 'Kaluž je veľká ' . $table->getFirstLargestSpot()->getSize() . ' políčok.</br>' . "\n";
-    echo 'Počet kaluží je: ' . $table->getSpotsCount() . '<br>' . "\n";
+    echo 'The spot is ' . $table->getFirstLargestSpot()->getSize() . ' tiles large.</br>' . "\n";
+    echo 'The number of spots is: ' . $table->getSpotsCount() . '<br>' . "\n";
 }
 catch (\Exception $e) {
     // TODO: provide more information, like the file:line for example
